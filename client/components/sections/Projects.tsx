@@ -61,10 +61,23 @@ export default function Projects() {
             key={p.title}
             href={p.href}
             className="group relative overflow-hidden rounded-xl border border-white/10 bg-card/60 p-5 transition hover:bg-card/80"
+            onMouseMove={(e) => {
+              const el = e.currentTarget as HTMLElement;
+              const r = el.getBoundingClientRect();
+              const x = e.clientX - r.left;
+              const y = e.clientY - r.top;
+              el.style.setProperty("--x", `${(x / r.width) * 100}%`);
+              el.style.setProperty("--y", `${(y / r.height) * 100}%`);
+            }}
+            onMouseLeave={(e) => {
+              const el = e.currentTarget as HTMLElement;
+              el.style.removeProperty("--x");
+              el.style.removeProperty("--y");
+            }}
           >
             <div className="absolute inset-0 -z-10 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{
               background:
-                "radial-gradient(800px circle at var(--x,50%) var(--y,50%), hsla(var(--primary),0.14), transparent 40%)",
+                "radial-gradient(800px circle at var(--x,50%) var(--y,50%), hsl(var(--primary) / 0.14), transparent 40%)",
             }} />
             <h3 className="text-lg font-semibold">{p.title}</h3>
             <p className="mt-2 text-sm text-muted-foreground">{p.desc}</p>

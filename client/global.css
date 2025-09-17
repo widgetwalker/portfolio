@@ -120,6 +120,6 @@
   }
   .neon-border {
     box-shadow: 0 0 0 1px hsl(var(--border)) inset,
-      0 0 24px hsla(var(--accent), 0.25), 0 0 48px hsla(var(--primary), 0.15);
+      0 0 24px hsl(var(--accent) / 0.25), 0 0 48px hsl(var(--primary) / 0.15);
   }
 }

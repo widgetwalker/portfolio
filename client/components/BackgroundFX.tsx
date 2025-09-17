@@ -16,15 +16,15 @@ export default function BackgroundFX() {
       {/* Glow blobs */}
       <div className="absolute -top-24 -left-24 h-[36rem] w-[36rem] rounded-full blur-[120px]" style={{
         background:
-          "radial-gradient(closest-side, hsla(var(--primary),0.32), transparent)",
+          "radial-gradient(closest-side, hsl(var(--primary) / 0.32), transparent)",
       }} />
       <div className="absolute top-1/3 -right-24 h-[32rem] w-[32rem] rounded-full blur-[120px]" style={{
         background:
-          "radial-gradient(closest-side, hsla(var(--accent),0.28), transparent)",
+          "radial-gradient(closest-side, hsl(var(--accent) / 0.28), transparent)",
       }} />
       <div className="absolute -bottom-32 left-1/4 h-[28rem] w-[28rem] rounded-full blur-[120px]" style={{
         background:
-          "radial-gradient(closest-side, hsla(var(--secondary),0.22), transparent)",
+          "radial-gradient(closest-side, hsl(var(--secondary) / 0.22), transparent)",
       }} />
     </div>
   );
