@@ -64,9 +64,8 @@ export default function ProjectDetail() {
     );
   }
 
-  const firstImageMatch = readme ? readme.match(/!\[[^\]]*\]\(([^(]+)\)/) : null;
-  const imageUrl = firstImageMatch ? firstImageMatch[1] : repo.owner?.avatar_url;
-  const excerpt = readme ? readme.substring(0, 2000) : repo.description ?? "";
+  const imageUrl = repo.owner?.avatar_url;
+  const excerpt = repo.description ?? "";
 
   return (
     <main className="mx-auto max-w-4xl px-4 py-20">
