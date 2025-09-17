@@ -41,7 +41,9 @@ export default function SiteHeader() {
 
           <div className="flex items-center gap-3">
             <a
-              href="#contact"
+              href="https://github.com/widgetwalker"
+              target="_blank"
+              rel="noreferrer noopener"
               className="inline-flex items-center justify-center rounded-md border border-white/10 bg-gradient-to-r from-primary to-accent px-4 py-2 text-sm font-semibold text-primary-foreground shadow-md transition hover:opacity-90"
             >
               Connect
