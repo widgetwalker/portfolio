@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Animate from "@/components/Animate";
 
+const TAGLINES = [
+  "DHEERAJ doesn't build websites. He engineers digital adrenaline. Pixels obey. Code dances. The future watches.",
+  "Forged in caffeine and chaos, DHEERAJ crafts worlds where design defies gravity and every scroll feels like a supernova.",
+  "DHEERAJ: Architect of the impossible. Where web meets wow.",
+];
+
 export default function Hero() {
+  const [tagIndex, setTagIndex] = useState(0);
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setTagIndex((i) => (i + 1) % TAGLINES.length);
+    }, 5000);
+    return () => clearInterval(t);
+  }, []);
+
   return (
     <section id="home" className="relative isolate">
       <div className="mx-auto grid min-h-[88vh] max-w-7xl items-center gap-10 px-4 pt-28 md:grid-cols-2 md:pt-32">
@@ -15,7 +30,9 @@ export default function Hero() {
             <h1 className="text-balance text-5xl font-extrabold leading-tight tracking-tight sm:text-6xl">
               <span className="text-gradient">DHEERAJ</span>
               <br />
-              builds bold, futuristic web experiences
+              <span className="text-lg sm:text-2xl text-muted-foreground block max-w-3xl">
+                {TAGLINES[tagIndex]}
+              </span>
             </h1>
 
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
@@ -40,7 +57,7 @@ export default function Hero() {
             <div className="mt-10 grid max-w-xl grid-cols-3 gap-4 text-center text-sm">
               <Animate className="relative">
                 <div className="rounded-xl border border-white/10 bg-card/60 p-4 backdrop-blur card-hover hover-glow">
-                  <div className="text-2xl font-bold text-gradient">15+</div>
+                  <div className="text-2xl font-bold text-gradient">10+</div>
                   <div className="text-muted-foreground">Projects</div>
                 </div>
               </Animate>
@@ -54,7 +71,7 @@ export default function Hero() {
 
               <Animate className="relative" delay={140}>
                 <div className="rounded-xl border border-white/10 bg-card/60 p-4 backdrop-blur card-hover hover-glow">
-                  <div className="text-2xl font-bold text-gradient">3.9</div>
+                  <div className="text-2xl font-bold text-gradient">8.7</div>
                   <div className="text-muted-foreground">GPA</div>
                 </div>
               </Animate>
