@@ -19,7 +19,7 @@ export default function SiteHeader() {
           "mt-4 flex items-center justify-between rounded-xl border bg-card/70 px-4 py-3 backdrop-blur supports-[backdrop-filter]:bg-card/60",
           "border-white/10"
         )}>
-          <a href="#home" className="group inline-flex items-center gap-2">
+          <a href="/" className="group inline-flex items-center gap-2">
             <div className="relative">
               <span className="text-gradient text-xl font-bold tracking-wider">DHEERAJ</span>
               <span className="absolute -right-4 -top-2 h-2 w-2 rounded-full bg-primary shadow-[0_0_18px_hsl(var(--primary))]" />
