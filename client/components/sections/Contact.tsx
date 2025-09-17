@@ -10,13 +10,13 @@ export default function Contact() {
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
           <a
-            href="mailto:contact@dheeraj.dev?subject=Hello%20Dheeraj"
+            href="mailto:dheeraj5765483@gmail.com?subject=Hello%20Dheeraj"
             className="inline-flex items-center justify-center rounded-md border border-white/10 bg-gradient-to-r from-primary to-accent px-5 py-3 text-sm font-semibold text-primary-foreground shadow transition hover:opacity-90"
           >
             Email me
           </a>
           <a
-            href="https://github.com/"
+            href="https://github.com/widgetwalker"
             target="_blank"
             rel="noreferrer noopener"
             className="inline-flex items-center justify-center rounded-md border border-white/10 bg-card px-5 py-3 text-sm font-semibold text-foreground hover:bg-muted/30"
@@ -24,7 +24,7 @@ export default function Contact() {
             GitHub
           </a>
           <a
-            href="https://www.linkedin.com/"
+            href="https://www.linkedin.com/in/pilli-dheeraj"
             target="_blank"
             rel="noreferrer noopener"
             className="inline-flex items-center justify-center rounded-md border border-white/10 bg-card px-5 py-3 text-sm font-semibold text-foreground hover:bg-muted/30"
