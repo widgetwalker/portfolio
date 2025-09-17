@@ -9,9 +9,9 @@ export default function SiteFooter() {
             © {new Date().getFullYear()} Dheeraj. All rights reserved.
           </p>
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
-            <a href="#projects" className="hover:text-foreground">Projects</a>
-            <a href="#skills" className="hover:text-foreground">Skills</a>
-            <a href="#contact" className="hover:text-foreground">Contact</a>
+            <a href="/#projects" className="hover:text-foreground">Projects</a>
+            <a href="/#skills" className="hover:text-foreground">Skills</a>
+            <a href="/#contact" className="hover:text-foreground">Contact</a>
           </div>
         </div>
       </div>
