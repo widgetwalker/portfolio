@@ -122,4 +122,53 @@
     box-shadow: 0 0 0 1px hsl(var(--border)) inset,
       0 0 24px hsl(var(--accent) / 0.25), 0 0 48px hsl(var(--primary) / 0.15);
   }
+
+  /* Smooth transition utility */
+  .transition-smooth {
+    transition: all 350ms cubic-bezier(.2,.9,.2,1);
+    will-change: transform, opacity, box-shadow, filter;
+  }
+
+  /* Fade up animation used when element enters viewport */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(18px) scale(0.995);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 600ms cubic-bezier(.2,.9,.2,1) both;
+  }
+
+  /* Subtle pop for hover */
+  @keyframes pop {
+    0% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-4px) scale(1.02); }
+    100% { transform: translateY(0) scale(1); }
+  }
+
+  .hover-pop:hover {
+    animation: pop 420ms ease;
+  }
+
+  /* Glow effect for cards */
+  .card-glow {
+    box-shadow: 0 6px 30px rgba(2,6,23,0.6), 0 0 0 1px hsl(var(--border)) inset;
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 12px 60px rgba(88, 70, 204, 0.16), 0 0 48px hsl(var(--primary) / 0.08), 0 0 24px hsl(var(--accent) / 0.06);
+    transform: translateY(-8px) scale(1.03);
+  }
+
+  /* Utility to slightly lift on hover using tailwind safe classes fallback */
+  .card-hover {
+    transition: transform 300ms cubic-bezier(.2,.9,.2,1), box-shadow 300ms cubic-bezier(.2,.9,.2,1), opacity 300ms;
+    will-change: transform, box-shadow;
+  }
 }
