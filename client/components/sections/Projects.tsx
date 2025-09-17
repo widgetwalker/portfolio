@@ -82,9 +82,7 @@ export default function Projects() {
           repos.map((p) => (
             <Animate key={p.id} className="relative">
               <a
-                href={p.html_url}
-                target="_blank"
-                rel="noreferrer noopener"
+                href={`/projects/${encodeURIComponent(p.name)}`}
                 className="group relative overflow-hidden rounded-xl border border-white/10 bg-card/60 p-5 transition hover:bg-card/80 card-hover hover-glow hover-pop h-full flex flex-col justify-between"
                 onMouseMove={(e) => {
                   const el = e.currentTarget as HTMLElement;
