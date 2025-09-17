@@ -16,13 +16,17 @@ export default function Contact() {
             Email me
           </a>
           <a
-            href="#"
+            href="https://github.com/"
+            target="_blank"
+            rel="noreferrer noopener"
             className="inline-flex items-center justify-center rounded-md border border-white/10 bg-card px-5 py-3 text-sm font-semibold text-foreground hover:bg-muted/30"
           >
             GitHub
           </a>
           <a
-            href="#"
+            href="https://www.linkedin.com/"
+            target="_blank"
+            rel="noreferrer noopener"
             className="inline-flex items-center justify-center rounded-md border border-white/10 bg-card px-5 py-3 text-sm font-semibold text-foreground hover:bg-muted/30"
           >
             LinkedIn
