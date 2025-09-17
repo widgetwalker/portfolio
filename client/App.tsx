@@ -23,6 +23,7 @@ const App = () => (
       <BackgroundFX />
       <BrowserRouter>
         <SiteHeader />
+        <ScrollToHash />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/projects/:name" element={<ProjectDetail />} />
