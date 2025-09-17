@@ -28,17 +28,19 @@ export default function Skills() {
       </p>
 
       <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {groups.map((g) => (
-          <div key={g.name} className="rounded-xl border border-white/10 bg-card/60 p-5 backdrop-blur">
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">{g.name}</h3>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {g.items.map((i) => (
-                <span key={i} className="rounded-full border border-white/10 bg-background/60 px-3 py-1 text-xs">
-                  {i}
-                </span>
-              ))}
+        {groups.map((g, i) => (
+          <Animate key={g.name} className="relative">
+            <div key={g.name} className="rounded-xl border border-white/10 bg-card/60 p-5 backdrop-blur card-hover hover-glow hover-pop">
+              <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">{g.name}</h3>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {g.items.map((i) => (
+                  <span key={i} className="rounded-full border border-white/10 bg-background/60 px-3 py-1 text-xs">
+                    {i}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
+          </Animate>
         ))}
       </div>
     </section>
