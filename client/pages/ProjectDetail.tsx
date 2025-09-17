@@ -16,7 +16,6 @@ type RepoDetail = {
 export default function ProjectDetail() {
   const { name } = useParams();
   const [repo, setRepo] = useState<RepoDetail | null>(null);
-  const [readme, setReadme] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -29,20 +28,6 @@ export default function ProjectDetail() {
         if (!res.ok) throw new Error(`GitHub repo ${res.status}`);
         const data = await res.json();
         setRepo(data);
-
-        // fetch README
-        try {
-          const r2 = await fetch(`https://api.github.com/repos/widgetwalker/${name}/readme`);
-          if (r2.ok) {
-            const rd = await r2.json();
-            if (rd && rd.content) {
-              const decoded = atob(rd.content.replace(/\n/g, ""));
-              setReadme(decoded);
-            }
-          }
-        } catch (e) {
-          // ignore readme errors
-        }
       } catch (e: any) {
         console.error(e);
         setError("Could not load repository details.");
