@@ -31,14 +31,16 @@ export default function Timeline() {
 
       <div className="mt-8 space-y-6">
         {items.map((item, idx) => (
-          <div key={idx} className="relative grid gap-4 rounded-xl border border-white/10 bg-card/60 p-5 md:grid-cols-[160px_1fr]">
-            <div className="text-sm text-muted-foreground">{item.time}</div>
-            <div>
-              <div className="text-lg font-semibold">{item.title}</div>
-              <div className="text-sm text-muted-foreground">{item.place}</div>
-              <p className="mt-2 text-sm text-muted-foreground">{item.details}</p>
+          <Animate key={idx} className="relative">
+            <div className="relative grid gap-4 rounded-xl border border-white/10 bg-card/60 p-5 md:grid-cols-[160px_1fr] card-hover hover-glow hover-pop">
+              <div className="text-sm text-muted-foreground">{item.time}</div>
+              <div>
+                <div className="text-lg font-semibold">{item.title}</div>
+                <div className="text-sm text-muted-foreground">{item.place}</div>
+                <p className="mt-2 text-sm text-muted-foreground">{item.details}</p>
+              </div>
             </div>
-          </div>
+          </Animate>
         ))}
       </div>
     </section>
