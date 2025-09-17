@@ -171,4 +171,12 @@
     transition: transform 300ms cubic-bezier(.2,.9,.2,1), box-shadow 300ms cubic-bezier(.2,.9,.2,1), opacity 300ms;
     will-change: transform, box-shadow;
   }
+
+  /* Simple line clamp (3 lines) without plugin */
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 }
