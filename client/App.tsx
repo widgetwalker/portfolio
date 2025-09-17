@@ -12,6 +12,24 @@ import NotFound from "./pages/NotFound";
 import BackgroundFX from "@/components/BackgroundFX";
 import SiteHeader from "@/components/layout/SiteHeader";
 import SiteFooter from "@/components/layout/SiteFooter";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
+function ScrollToHash() {
+  const { hash, pathname } = useLocation();
+
+  useEffect(() => {
+    if (!hash) return;
+    // small timeout to allow page render
+    const id = hash.replace("#", "");
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
+  }, [hash, pathname]);
+
+  return null;
+}
 
 const queryClient = new QueryClient();
 
