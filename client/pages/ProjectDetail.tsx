@@ -136,15 +136,13 @@ export default function ProjectDetail() {
         <aside>
           <div className="rounded-xl border border-white/10 bg-card/60 p-4 text-center">
             {imageUrl ? (
-              // show image scaled
-              // use a simple img tag; some URLs may be relative, handle that by skipping
               <img src={imageUrl} alt={repo.name} className="mx-auto mb-3 h-40 w-40 rounded-md object-cover" />
             ) : (
               <div className="mx-auto mb-3 h-40 w-40 rounded-md bg-muted/30" />
             )}
 
             <div className="text-sm text-muted-foreground">Repository</div>
-            <div className="mt-2 text-lg font-semibold">{repo.full_name}</div>
+            <div className="mt-2 text-sm text-muted-foreground">{repo.owner?.login ?? ''}</div>
           </div>
         </aside>
       </div>
