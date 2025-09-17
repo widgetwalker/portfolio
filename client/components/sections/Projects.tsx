@@ -120,7 +120,7 @@ export default function Projects() {
                 </div>
 
                 <div className="mt-5 inline-flex items-center gap-2 text-sm text-gradient">
-                  <span>View on GitHub</span>
+                  <span>More details</span>
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-4">
                     <path d="M5 12h12m0 0-5-5m5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
