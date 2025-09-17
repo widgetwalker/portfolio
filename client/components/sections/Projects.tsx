@@ -5,37 +5,31 @@ const projects = [
     title: "Algorithm Visualizer",
     desc: "Interactive visualizations for graph, sorting, and pathfinding algorithms with step-by-step controls.",
     tech: ["TypeScript", "React", "D3.js"],
-    href: "#",
   },
   {
     title: "Campus Connect",
     desc: "A student collaboration hub with realtime chat, event boards, and project teams.",
     tech: ["Next.js", "Supabase", "Tailwind"],
-    href: "#",
   },
   {
     title: "ML Playground",
     desc: "In-browser ML demos exploring CNNs, transformers, and embeddings.",
     tech: ["Python", "PyTorch", "ONNX"],
-    href: "#",
   },
   {
     title: "DevTools Kit",
     desc: "CLI + web tools for linting, formatting, and repo maintenance.",
     tech: ["Node.js", "Rust", "Zod"],
-    href: "#",
   },
   {
     title: "3D Portfolio",
     desc: "Three.js powered portfolio with physics-based interactions and shaders.",
     tech: ["Three.js", "React Three Fiber"],
-    href: "#",
   },
   {
     title: "Open Source PRs",
     desc: "Contributions to UI libraries, docs tooling, and DX improvements.",
     tech: ["OSS", "Docs", "DX"],
-    href: "#",
   },
 ];
 
@@ -57,9 +51,8 @@ export default function Projects() {
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((p) => (
-          <a
+          <div
             key={p.title}
-            href={p.href}
             className="group relative overflow-hidden rounded-xl border border-white/10 bg-card/60 p-5 transition hover:bg-card/80"
             onMouseMove={(e) => {
               const el = e.currentTarget as HTMLElement;
@@ -94,7 +87,7 @@ export default function Projects() {
                 <path d="M5 12h12m0 0-5-5m5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
-          </a>
+          </div>
         ))}
       </div>
     </section>
