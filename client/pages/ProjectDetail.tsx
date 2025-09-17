@@ -107,13 +107,7 @@ export default function ProjectDetail() {
         <div className="md:col-span-2">
           <div className="rounded-xl border border-white/10 bg-card/60 p-6">
             <h2 className="text-xl font-semibold">Overview</h2>
-            <p className="mt-3 text-muted-foreground whitespace-pre-wrap">{excerpt}</p>
-            {readme && (
-              <div className="mt-6">
-                <h3 className="text-lg font-semibold">README (excerpt)</h3>
-                <pre className="mt-2 max-h-[40vh] overflow-auto whitespace-pre-wrap text-sm text-muted-foreground">{readme.substring(0, 8000)}</pre>
-              </div>
-            )}
+            <p className="mt-3 text-muted-foreground">{excerpt}</p>
           </div>
         </div>
 
