@@ -17,7 +17,7 @@ export default function Index() {
               I’m Dheeraj, a tech-focused Computer Science student who loves building delightful, modern interfaces and tooling. I enjoy low-level systems, algorithms, and bringing ideas to life with code and design.
             </p>
             <p className="mt-2 text-muted-foreground">
-              When I’m not coding, I explore new design trends, contribute to open-source, and experiment with ML projects.
+              When not at the keyboard, I craft mind-altering stories and poems, analyze design evolutions, dispense amateur psychological insights as free therapy, and wield pencil sketches with expert precision.
             </p>
           </div>
           <div className="rounded-xl border border-white/10 bg-card/60 p-6 backdrop-blur">
