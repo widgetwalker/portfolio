@@ -175,6 +175,16 @@
     transform: translateY(-8px) scale(1.03);
   }
 
+  /* Glossy / glowy gradient card used for highlighted sections like timeline */
+  .glossy-card {
+    /* subtle glass + neon gradient */
+    background-color: rgba(13, 17, 28, 0.6);
+    background-image: linear-gradient(135deg, hsl(var(--primary) / 0.06), hsl(var(--accent) / 0.05));
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 10px 40px rgba(88, 70, 204, 0.12), 0 0 60px hsl(var(--primary) / 0.04) inset;
+    backdrop-filter: blur(6px) saturate(1.05);
+  }
+
   /* Utility to slightly lift on hover using tailwind safe classes fallback */
   .card-hover {
     transition: transform 300ms cubic-bezier(.2,.9,.2,1), box-shadow 300ms cubic-bezier(.2,.9,.2,1), opacity 300ms;
