@@ -116,11 +116,13 @@ export default function Hero() {
         <div className="relative">
           <Animate>
             <div className="neon-border relative mx-auto aspect-square w-72 rounded-2xl border border-white/10 bg-gradient-to-br from-card to-background p-2 sm:w-80 md:w-96 card-hover hover-glow">
-              <div className="flex h-full items-center justify-center rounded-xl border border-white/10 bg-gradient-to-br from-background to-card">
-                <div className="text-center">
-                  <div className="mx-auto mb-4 size-24 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 p-1">
-                    <div className="h-full w-full rounded-full border border-white/10 bg-background" />
-                  </div>
+              <div className="relative flex h-full items-center justify-center rounded-xl border border-white/10 bg-gradient-to-br from-background to-card overflow-hidden">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets%2F7aa2766cafed47ac93c5e37e8c39eac3%2Fdffe502d4b844914bc6643e4a526ddd0?format=webp&width=800"
+                  alt="Dheeraj's Profile"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+                <div className="relative z-10 text-center p-4">
                   <p className="text-sm uppercase tracking-[0.35em] text-muted-foreground">Profile</p>
                   <p className="text-xl font-semibold">Tech Enthusiast · Builder</p>
                 </div>
