@@ -122,13 +122,13 @@ export default function Hero() {
                   alt="Dheeraj's Profile"
                   className="absolute inset-0 h-full w-full object-cover"
                 />
-                <div className="relative z-10 text-center p-4">
-                  <p className="text-sm uppercase tracking-[0.35em] text-muted-foreground">Profile</p>
-                  <p className="text-xl font-semibold">Tech Enthusiast · Builder</p>
-                </div>
               </div>
             </div>
           </Animate>
+
+          <div className="mt-4 text-right md:mt-6">
+            <div className="text-2xl md:text-3xl font-extrabold tracking-tight text-gradient">Tech Enthusiast · Builder</div>
+          </div>
 
           <div className="pointer-events-none absolute -right-6 top-10 hidden rotate-12 md:block">
             <div className="rounded-full border border-white/10 bg-card/70 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
