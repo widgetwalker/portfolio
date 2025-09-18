@@ -126,8 +126,8 @@ export default function Hero() {
             </div>
           </Animate>
 
-          <div className="mt-4 text-right md:mt-6">
-            <div className="text-2xl md:text-3xl font-extrabold tracking-tight text-gradient">Tech Enthusiast · Builder</div>
+          <div className="mt-4 text-center md:mt-6">
+            <div className="text-2xl md:text-3xl font-extrabold tracking-tight text-white">Tech Enthusiast · Builder</div>
           </div>
 
           <div className="pointer-events-none absolute -right-6 top-10 hidden rotate-12 md:block">
