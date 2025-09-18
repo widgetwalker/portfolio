@@ -53,6 +53,7 @@ export default function SiteHeader() {
               <a
                 key={item.href}
                 href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
                 className="text-muted-foreground transition hover:text-foreground"
               >
                 {item.label}
