@@ -65,15 +65,10 @@ export default function Hero() {
               <button
                 onClick={(e) => {
                   e.preventDefault();
+                  // navigate to root with hash - ScrollToHash will handle scrolling
                   window.history.pushState({}, "", "/#projects");
-                  const el = document.getElementById("projects");
-                  const header = document.querySelector("header");
-                  const headerHeight = header ? header.getBoundingClientRect().height : 88;
-                  if (el) {
-                    const rect = el.getBoundingClientRect();
-                    const top = window.scrollY + rect.top - headerHeight - 12;
-                    window.scrollTo({ top, behavior: "smooth" });
-                  }
+                  const navEvent = new HashChangeEvent("hashchange");
+                  window.dispatchEvent(navEvent);
                 }}
                 className="inline-flex items-center justify-center rounded-md border border-white/10 bg-gradient-to-r from-primary to-accent px-5 py-3 text-sm font-semibold text-primary-foreground shadow transition hover:opacity-90"
               >
@@ -83,14 +78,8 @@ export default function Hero() {
                 onClick={(e) => {
                   e.preventDefault();
                   window.history.pushState({}, "", "/#contact");
-                  const el = document.getElementById("contact");
-                  const header = document.querySelector("header");
-                  const headerHeight = header ? header.getBoundingClientRect().height : 88;
-                  if (el) {
-                    const rect = el.getBoundingClientRect();
-                    const top = window.scrollY + rect.top - headerHeight - 12;
-                    window.scrollTo({ top, behavior: "smooth" });
-                  }
+                  const navEvent = new HashChangeEvent("hashchange");
+                  window.dispatchEvent(navEvent);
                 }}
                 className="inline-flex items-center justify-center rounded-md border border-white/10 bg-card px-5 py-3 text-sm font-semibold text-foreground hover:bg-muted/30"
               >
