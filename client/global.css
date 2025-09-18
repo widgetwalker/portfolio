@@ -209,4 +209,9 @@
   section[id] {
     scroll-margin-top: calc(var(--header-height, 88px) + 12px);
   }
+
+  /* Ensure main content is never hidden behind the fixed header */
+  main {
+    padding-top: calc(var(--header-height, 88px) + 12px);
+  }
 }
