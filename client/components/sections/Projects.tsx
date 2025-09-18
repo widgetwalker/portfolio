@@ -97,6 +97,33 @@ export default function Projects() {
                   el.style.removeProperty("--x");
                   el.style.removeProperty("--y");
                 }}
+                onMouseEnter={() => {
+                  // prefetch repo details into sessionStorage to speed up navigation
+                  try {
+                    const key = `repo:${p.name}`;
+                    if (!sessionStorage.getItem(key)) {
+                      fetch(`https://api.github.com/repos/widgetwalker/${p.name}`)
+                        .then((r) => r.ok ? r.json() : null)
+                        .then((data) => {
+                          if (data) sessionStorage.setItem(key, JSON.stringify(data));
+                        })
+                        .catch(() => {});
+                    }
+                  } catch (e) {}
+                }}
+                onFocus={() => {
+                  try {
+                    const key = `repo:${p.name}`;
+                    if (!sessionStorage.getItem(key)) {
+                      fetch(`https://api.github.com/repos/widgetwalker/${p.name}`)
+                        .then((r) => r.ok ? r.json() : null)
+                        .then((data) => {
+                          if (data) sessionStorage.setItem(key, JSON.stringify(data));
+                        })
+                        .catch(() => {});
+                    }
+                  } catch (e) {}
+                }}
               >
                 <div className="absolute inset-0 -z-10 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{
                   background:
