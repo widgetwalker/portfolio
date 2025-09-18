@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 
 const nav = [
-  { href: "/#about", label: "About" },
-  { href: "/#projects", label: "Projects" },
-  { href: "/#skills", label: "Skills" },
-  { href: "/#timeline", label: "Timeline" },
-  { href: "/#contact", label: "Contact" },
+  { href: "#about", label: "About" },
+  { href: "#projects", label: "Projects" },
+  { href: "#skills", label: "Skills" },
+  { href: "#timeline", label: "Timeline" },
+  { href: "#contact", label: "Contact" },
 ];
 
 export default function SiteHeader() {
