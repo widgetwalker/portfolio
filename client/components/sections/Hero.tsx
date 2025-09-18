@@ -41,7 +41,7 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative isolate">
-      <div className="mx-auto grid min-h-[88vh] max-w-7xl items-center gap-10 px-4 pt-28 md:grid-cols-2 md:pt-32">
+      <div className="mx-auto grid min-h-[88vh] max-w-7xl items-center gap-10 px-4 pt-6 md:grid-cols-2 md:pt-10">
         <div>
           <Animate>
             <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-card/60 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
