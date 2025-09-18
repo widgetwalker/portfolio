@@ -9,13 +9,35 @@ const TAGLINES = [
 
 export default function Hero() {
   const [tagIndex, setTagIndex] = useState(0);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const t = setInterval(() => {
-      setTagIndex((i) => (i + 1) % TAGLINES.length);
+    const interval = setInterval(() => {
+      // fade out
+      setVisible(false);
+      setTimeout(() => {
+        setTagIndex((i) => (i + 1) % TAGLINES.length);
+        // fade in
+        setVisible(true);
+      }, 650);
     }, 5000);
-    return () => clearInterval(t);
+    return () => clearInterval(interval);
   }, []);
+
+  const renderTagline = (text: string) => {
+    // replace occurrences of DHEERAJ with a red gradient span
+    const parts = text.split(/(DHEERAJ)/g);
+    return parts.map((p, idx) => {
+      if (p === "DHEERAJ") {
+        return (
+          <span key={idx} className="text-gradient-red font-extrabold">
+            {p}
+          </span>
+        );
+      }
+      return <span key={idx}>{p}</span>;
+    });
+  };
 
   return (
     <section id="home" className="relative isolate">
