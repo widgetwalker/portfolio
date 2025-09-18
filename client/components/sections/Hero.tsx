@@ -58,7 +58,7 @@ export default function Hero() {
             </h1>
 
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-              I craft performant interfaces, explore algorithms, and tinker with ML. Passionate about design systems, systems programming, and developer tooling.
+              I craft performant game interfaces, dissect Python algorithms, and tinker with 3D modeling pipelines. Passionate about design systems, systems programming, and developer tooling.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
