@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const nav = [
   { href: "#about", label: "About" },
@@ -11,6 +12,26 @@ const nav = [
 
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleNavClick = (e: React.MouseEvent, href: string) => {
+    e.preventDefault();
+    const target = `/${href}`; // e.g. '/#about'
+    // navigate only if different
+    if (location.pathname + location.hash !== target) navigate(target, { replace: false });
+    // ensure smooth scroll after navigate
+    const id = href.replace("#", "");
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const header = document.querySelector("header");
+      const headerHeight = header ? header.getBoundingClientRect().height : 88;
+      const rect = el.getBoundingClientRect();
+      const top = window.scrollY + rect.top - headerHeight - 12;
+      window.scrollTo({ top, behavior: "smooth" });
+    }, 80);
+  };
 
   return (
     <header className="fixed top-0 z-40 w-full">
