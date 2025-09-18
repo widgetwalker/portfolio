@@ -52,7 +52,7 @@ export default function Timeline() {
         {items.map((item, idx) => (
           <Animate key={idx} className="relative">
             <div className="relative grid gap-4 rounded-xl glossy-card p-5 md:grid-cols-[160px_1fr] card-hover hover-glow hover-pop">
-              <div className="text-sm text-muted-foreground">{item.time}</div>
+              <div className="text-sm text-muted-foreground text-gradient">{item.time}</div>
               <div>
                 <div className="text-lg font-semibold">{item.title}</div>
                 <div className="text-sm text-muted-foreground">{item.place}</div>
