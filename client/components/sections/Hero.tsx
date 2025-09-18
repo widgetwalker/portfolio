@@ -52,8 +52,8 @@ export default function Hero() {
             <h1 className="text-balance text-5xl font-extrabold leading-tight tracking-tight sm:text-6xl">
               <span className="text-gradient">DHEERAJ</span>
               <br />
-              <span className="text-lg sm:text-2xl text-muted-foreground block max-w-3xl">
-                {TAGLINES[tagIndex]}
+              <span className={`text-lg sm:text-2xl text-muted-foreground block max-w-3xl tagline-fade ${visible ? "tagline-visible" : "tagline-hidden"}`}>
+                {renderTagline(TAGLINES[tagIndex])}
               </span>
             </h1>
 
