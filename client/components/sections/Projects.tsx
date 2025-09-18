@@ -28,10 +28,27 @@ export default function Projects() {
       const timeout = window.setTimeout(() => controller.abort(), 7000);
 
       try {
-        const res = await fetch(
-          "https://api.github.com/users/widgetwalker/repos?per_page=100&sort=updated",
-          { signal: controller.signal, headers: { Accept: "application/vnd.github.v3+json" } },
-        );
+        // Try server-side proxy first to avoid CORS/network issues
+        let res = null as Response | null;
+        try {
+          res = await fetch(`/api/github/repos?username=widgetwalker`, { signal: controller.signal });
+        } catch (err) {
+          // proxy failed (likely not running in static deploy), fallback to direct GitHub
+          res = null;
+        }
+
+        if (!res || !res.ok) {
+          // fallback to direct GitHub API call
+          try {
+            res = await fetch(
+              "https://api.github.com/users/widgetwalker/repos?per_page=100&sort=updated",
+              { signal: controller.signal, headers: { Accept: "application/vnd.github.v3+json" } },
+            );
+          } catch (err) {
+            // network error
+            throw err;
+          }
+        }
 
         if (!res.ok) {
           // If GitHub returns a 403 or rate-limit, present a helpful message and fallback
