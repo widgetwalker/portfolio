@@ -118,7 +118,7 @@ export default function Hero() {
             <div className="neon-border relative mx-auto aspect-square w-72 rounded-2xl border border-white/10 bg-gradient-to-br from-card to-background p-2 sm:w-80 md:w-96 card-hover hover-glow">
               <div className="relative flex h-full items-center justify-center rounded-xl border border-white/10 bg-gradient-to-br from-background to-card overflow-hidden">
                 <img
-                  src="https://cdn.builder.io/api/v1/image/assets%2F7aa2766cafed47ac93c5e37e8c39eac3%2Fdffe502d4b844914bc6643e4a526ddd0?format=webp&width=800"
+                  src="https://cdn.builder.io/api/v1/image/assets%2F7aa2766cafed47ac93c5e37e8c39eac3%2F0d2bfee87df649de8f30526e576768b3?format=webp&width=800"
                   alt="Dheeraj's Profile"
                   className="absolute inset-0 h-full w-full object-cover"
                 />
