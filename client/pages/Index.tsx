@@ -29,6 +29,12 @@ export default function Index() {
               <li>Systems Programming</li>
               <li>Machine Learning</li>
               <li>Open Source</li>
+              <li>Creative Writing</li>
+              <li>Pencil Sketching</li>
+              <li>Amateur Psychology</li>
+              <li>Game Design</li>
+              <li>3D Modeling</li>
+              <li>Python Development</li>
             </ul>
           </div>
         </div>
