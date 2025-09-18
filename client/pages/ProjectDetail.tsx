@@ -55,8 +55,19 @@ export default function ProjectDetail() {
   if (loading) {
     return (
       <div className="mx-auto max-w-4xl px-4 py-28">
-        <div className="h-6 w-48 animate-pulse rounded bg-muted/40" />
-        <div className="mt-4 h-4 w-72 animate-pulse rounded bg-muted/40" />
+        <div className="flex items-center gap-4">
+          <div>
+            <div className="h-6 w-48 animate-pulse rounded bg-muted/40" />
+            <div className="mt-4 h-4 w-72 animate-pulse rounded bg-muted/40" />
+          </div>
+          <div className="ml-auto">
+            {/* show fun loading spinner */}
+            <div className="rounded-full bg-gradient-to-r from-primary to-accent p-3 inline-block">
+              <div className="h-8 w-8 rounded-full bg-card animate-bounce" />
+            </div>
+          </div>
+        </div>
+
         <div className="mt-8 space-y-3">
           <div className="h-4 w-full animate-pulse rounded bg-muted/40" />
           <div className="h-4 w-full animate-pulse rounded bg-muted/40" />
