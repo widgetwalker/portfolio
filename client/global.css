@@ -110,6 +110,13 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
   }
 
+  /* Subheadings (About, Projects, Skills, Timeline, Contact) use Decker */
+  h2, h3, .subheading {
+    font-family: 'GFSDeckerNormal', "Space Grotesk", system-ui, -apple-system, Segoe UI, Roboto, Inter, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+
   html { scroll-behavior: smooth; }
 }
 
