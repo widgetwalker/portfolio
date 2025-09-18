@@ -1,12 +1,13 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
 export default function SiteFooter() {
-  const navigate = useNavigate();
-
   const navTo = (hash: string) => (e: React.MouseEvent) => {
     e.preventDefault();
-    navigate(`/${hash}`);
+    if (window.location.hash !== hash) window.location.hash = hash;
+    else {
+      const el = document.getElementById(hash.replace('#',''));
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   return (
