@@ -14,7 +14,7 @@ export default function Index() {
           <div className="rounded-xl border border-white/10 bg-card/60 p-6 backdrop-blur">
             <h2 className="text-2xl font-semibold tracking-tight">About</h2>
             <p className="mt-2 text-muted-foreground">
-              I’m Dheeraj, a tech-focused Computer Science student who loves building delightful, modern interfaces and tooling. I enjoy low-level systems, algorithms, and bringing ideas to life with code and design.
+              I'm Dheeraj, a CS undergraduate with technical orientation, develops intuitive modern UIs and developer aids. Fascinated by core systems engineering, computational algorithms, and realizing prototypes via programming and aesthetics.
             </p>
             <p className="mt-2 text-muted-foreground">
               When not at the keyboard, I craft mind-altering stories and poems, analyze design evolutions, dispense amateur psychological insights as free therapy, and wield pencil sketches with expert precision.
