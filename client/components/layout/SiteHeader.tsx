@@ -94,7 +94,10 @@ export default function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 className="block rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-muted/30 hover:text-foreground"
-                onClick={() => setOpen(false)}
+                onClick={(e) => {
+                  handleNavClick(e as any, item.href);
+                  setOpen(false);
+                }}
               >
                 {item.label}
               </a>
