@@ -179,4 +179,29 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
+  /* Red gradient text for name highlights */
+  .text-gradient-red {
+    background: linear-gradient(90deg, #ff375f 0%, #ff8a00 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Tagline crossfade (dust-like) */
+  .tagline-fade {
+    transition: opacity 700ms cubic-bezier(.2,.9,.2,1), transform 700ms cubic-bezier(.2,.9,.2,1), filter 700ms cubic-bezier(.2,.9,.2,1);
+  }
+
+  .tagline-hidden {
+    opacity: 0;
+    transform: translateY(10px) scale(0.995);
+    filter: blur(3px) saturate(0.9);
+  }
+
+  .tagline-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0) saturate(1);
+  }
 }
