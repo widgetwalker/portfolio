@@ -1,5 +1,7 @@
 /** @import must precede all other statements */
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap");
+@import url("https://fontlibrary.org/face/gfs-decker");
+/* Decker (GFS Decker) will be used for subheadings (fallback to Space Grotesk) */
 
 @tailwind base;
 @tailwind components;
