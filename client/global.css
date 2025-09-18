@@ -204,4 +204,9 @@
     transform: translateY(0) scale(1);
     filter: blur(0) saturate(1);
   }
+
+  /* Ensure anchored sections are visible below the fixed header */
+  section[id] {
+    scroll-margin-top: calc(var(--header-height, 88px) + 12px);
+  }
 }
