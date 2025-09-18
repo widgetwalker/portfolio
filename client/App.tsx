@@ -40,7 +40,16 @@ function ScrollToHash() {
 
   useEffect(() => {
     const runScrollToHash = () => {
-      const currentHash = window.location.hash || hash;
+      // derive target id from hash or pathname
+      let currentHash = window.location.hash || hash;
+      if (!currentHash) {
+        const pn = window.location.pathname;
+        if (pn === "/projects") currentHash = "#projects";
+        else if (pn === "/skills") currentHash = "#skills";
+        else if (pn === "/timeline") currentHash = "#timeline";
+        else if (pn === "/contact") currentHash = "#contact";
+        else if (pn === "/about") currentHash = "#about";
+      }
       if (!currentHash) return;
       const id = currentHash.replace("#", "");
 
