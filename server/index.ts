@@ -19,6 +19,7 @@ export function createServer() {
   });
 
   app.get("/api/demo", handleDemo);
+  app.get("/api/github/repos", handleGitHubRepos);
 
   return app;
 }
