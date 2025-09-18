@@ -21,7 +21,9 @@ export default function SiteHeader() {
       const el = document.getElementById(href.replace("#", ""));
       if (el) {
         const header = document.querySelector("header");
-        const headerHeight = header ? header.getBoundingClientRect().height : 88;
+        const headerHeight = header
+          ? header.getBoundingClientRect().height
+          : 88;
         const rect = el.getBoundingClientRect();
         const top = window.scrollY + rect.top - headerHeight - 12;
         window.scrollTo({ top, behavior: "smooth" });
@@ -32,16 +34,22 @@ export default function SiteHeader() {
   return (
     <header className="fixed top-0 z-40 w-full">
       <div className="mx-auto max-w-7xl px-4">
-        <div className={cn(
-          "mt-4 flex items-center justify-between rounded-xl border bg-card/70 px-4 py-3 backdrop-blur supports-[backdrop-filter]:bg-card/60",
-          "border-white/10"
-        )}>
+        <div
+          className={cn(
+            "mt-4 flex items-center justify-between rounded-xl border bg-card/70 px-4 py-3 backdrop-blur supports-[backdrop-filter]:bg-card/60",
+            "border-white/10",
+          )}
+        >
           <a href="/" className="group inline-flex items-center gap-2">
             <div className="relative">
-              <span className="text-gradient text-xl font-bold tracking-wider">DHEERAJ</span>
+              <span className="text-gradient text-xl font-bold tracking-wider">
+                DHEERAJ
+              </span>
               <span className="absolute -right-4 -top-2 h-2 w-2 rounded-full bg-primary shadow-[0_0_18px_hsl(var(--primary))]" />
             </div>
-            <span className="hidden text-sm text-muted-foreground sm:inline">Tech & CS</span>
+            <span className="hidden text-sm text-muted-foreground sm:inline">
+              Tech & CS
+            </span>
           </a>
 
           <nav className="hidden gap-6 text-sm font-medium sm:flex">
@@ -77,7 +85,12 @@ export default function SiteHeader() {
                 fill="currentColor"
                 className="size-5"
               >
-                <path d="M4 6h16M4 12h16M4 18h16" strokeWidth="2" stroke="currentColor" strokeLinecap="round" />
+                <path
+                  d="M4 6h16M4 12h16M4 18h16"
+                  strokeWidth="2"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                />
               </svg>
             </button>
           </div>

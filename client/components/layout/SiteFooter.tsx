@@ -5,8 +5,8 @@ export default function SiteFooter() {
     e.preventDefault();
     if (window.location.hash !== hash) window.location.hash = hash;
     else {
-      const el = document.getElementById(hash.replace('#',''));
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const el = document.getElementById(hash.replace("#", ""));
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
@@ -18,9 +18,27 @@ export default function SiteFooter() {
             © {new Date().getFullYear()} Dheeraj. All rights reserved.
           </p>
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
-            <a href="#projects" onClick={navTo("#projects")} className="hover:text-foreground">Projects</a>
-            <a href="#skills" onClick={navTo("#skills")} className="hover:text-foreground">Skills</a>
-            <a href="#contact" onClick={navTo("#contact")} className="hover:text-foreground">Contact</a>
+            <a
+              href="#projects"
+              onClick={navTo("#projects")}
+              className="hover:text-foreground"
+            >
+              Projects
+            </a>
+            <a
+              href="#skills"
+              onClick={navTo("#skills")}
+              className="hover:text-foreground"
+            >
+              Skills
+            </a>
+            <a
+              href="#contact"
+              onClick={navTo("#contact")}
+              className="hover:text-foreground"
+            >
+              Contact
+            </a>
           </div>
         </div>
       </div>

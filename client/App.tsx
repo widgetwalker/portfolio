@@ -61,7 +61,9 @@ function ScrollToHash() {
         const el = document.getElementById(id);
         if (el) {
           const header = document.querySelector("header");
-          const headerHeight = header ? header.getBoundingClientRect().height : 88;
+          const headerHeight = header
+            ? header.getBoundingClientRect().height
+            : 88;
           const rect = el.getBoundingClientRect();
           const top = window.scrollY + rect.top - headerHeight - 12;
           window.scrollTo({ top, behavior: "smooth" });

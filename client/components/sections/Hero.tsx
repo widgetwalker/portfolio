@@ -52,22 +52,29 @@ export default function Hero() {
             <h1 className="text-balance text-5xl font-extrabold leading-tight tracking-tight sm:text-6xl">
               <span className="text-gradient">DHEERAJ</span>
               <br />
-              <span className={`text-lg sm:text-2xl text-muted-foreground block max-w-3xl tagline-fade ${visible ? "tagline-visible" : "tagline-hidden"}`}>
+              <span
+                className={`text-lg sm:text-2xl text-muted-foreground block max-w-3xl tagline-fade ${visible ? "tagline-visible" : "tagline-hidden"}`}
+              >
                 {renderTagline(TAGLINES[tagIndex])}
               </span>
             </h1>
 
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-              I craft performant game interfaces, dissect Python algorithms, and tinker with 3D modeling pipelines. Passionate about design systems, systems programming, and developer tooling.
+              I craft performant game interfaces, dissect Python algorithms, and
+              tinker with 3D modeling pipelines. Passionate about design
+              systems, systems programming, and developer tooling.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <button
                 onClick={(e) => {
                   e.preventDefault();
-                  if (window.location.hash !== '#projects') window.location.hash = '#projects'; else {
-                    const el = document.getElementById('projects');
-                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  if (window.location.hash !== "#projects")
+                    window.location.hash = "#projects";
+                  else {
+                    const el = document.getElementById("projects");
+                    if (el)
+                      el.scrollIntoView({ behavior: "smooth", block: "start" });
                   }
                 }}
                 className="inline-flex items-center justify-center rounded-md border border-white/10 bg-gradient-to-r from-primary to-accent px-5 py-3 text-sm font-semibold text-primary-foreground shadow transition hover:opacity-90"
@@ -77,9 +84,12 @@ export default function Hero() {
               <button
                 onClick={(e) => {
                   e.preventDefault();
-                  if (window.location.hash !== '#contact') window.location.hash = '#contact'; else {
-                    const el = document.getElementById('contact');
-                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  if (window.location.hash !== "#contact")
+                    window.location.hash = "#contact";
+                  else {
+                    const el = document.getElementById("contact");
+                    if (el)
+                      el.scrollIntoView({ behavior: "smooth", block: "start" });
                   }
                 }}
                 className="inline-flex items-center justify-center rounded-md border border-white/10 bg-card px-5 py-3 text-sm font-semibold text-foreground hover:bg-muted/30"
@@ -127,12 +137,15 @@ export default function Hero() {
           </Animate>
 
           <div className="mt-4 text-center md:mt-6">
-            <div className="text-2xl md:text-3xl font-extrabold tracking-tight text-white">Tech Enthusiast · Builder</div>
+            <div className="text-2xl md:text-3xl font-extrabold tracking-tight text-white">
+              Tech Enthusiast · Builder
+            </div>
           </div>
 
           <div className="pointer-events-none absolute -right-6 top-10 hidden rotate-12 md:block">
             <div className="rounded-full border border-white/10 bg-card/70 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
-              <span className="text-gradient font-semibold">Futuristic</span> · Aesthetic · Dark
+              <span className="text-gradient font-semibold">Futuristic</span> ·
+              Aesthetic · Dark
             </div>
           </div>
         </div>

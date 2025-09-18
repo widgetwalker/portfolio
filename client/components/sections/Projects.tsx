@@ -51,8 +51,12 @@ export default function Projects() {
     <section id="projects" className="relative mx-auto mt-24 max-w-7xl px-4">
       <div className="mb-8 flex items-end justify-between">
         <div>
-          <h2 className="text-3xl font-bold tracking-tight">Featured Projects</h2>
-          <p className="mt-2 text-muted-foreground">A selection of repos from GitHub ({"@widgetwalker"}).</p>
+          <h2 className="text-3xl font-bold tracking-tight">
+            Featured Projects
+          </h2>
+          <p className="mt-2 text-muted-foreground">
+            A selection of repos from GitHub ({"@widgetwalker"}).
+          </p>
         </div>
         <a
           href="https://github.com/widgetwalker"
@@ -67,7 +71,10 @@ export default function Projects() {
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
         {loading &&
           Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} className="rounded-xl border border-white/10 bg-card/60 p-5 min-h-[160px]">
+            <div
+              key={i}
+              className="rounded-xl border border-white/10 bg-card/60 p-5 min-h-[160px]"
+            >
               <div className="h-6 w-40 animate-pulse rounded bg-muted/40" />
               <div className="mt-3 h-4 w-56 animate-pulse rounded bg-muted/40" />
               <div className="mt-4 flex items-center gap-2">
@@ -110,13 +117,22 @@ export default function Projects() {
                           const controller = new AbortController();
                           const sig = controller.signal;
                           // small timeout for fetch
-                          const timeout = window.setTimeout(() => controller.abort(), 3000);
+                          const timeout = window.setTimeout(
+                            () => controller.abort(),
+                            3000,
+                          );
                           try {
-                            const r = await fetch(`https://api.github.com/repos/widgetwalker/${p.name}`, { signal: sig });
+                            const r = await fetch(
+                              `https://api.github.com/repos/widgetwalker/${p.name}`,
+                              { signal: sig },
+                            );
                             if (r.ok) {
                               const data = await r.json();
                               try {
-                                sessionStorage.setItem(key, JSON.stringify(data));
+                                sessionStorage.setItem(
+                                  key,
+                                  JSON.stringify(data),
+                                );
                               } catch (e) {}
                             }
                           } catch (e) {
@@ -146,29 +162,46 @@ export default function Projects() {
                   try {
                     const key = `repo:${p.name}`;
                     if (!sessionStorage.getItem(key)) {
-                      fetch(`https://api.github.com/repos/widgetwalker/${p.name}`)
-                        .then((r) => r.ok ? r.json() : null)
+                      fetch(
+                        `https://api.github.com/repos/widgetwalker/${p.name}`,
+                      )
+                        .then((r) => (r.ok ? r.json() : null))
                         .then((data) => {
-                          if (data) try { sessionStorage.setItem(key, JSON.stringify(data)); } catch (e) {}
+                          if (data)
+                            try {
+                              sessionStorage.setItem(key, JSON.stringify(data));
+                            } catch (e) {}
                         })
                         .catch(() => {});
                     }
                   } catch (e) {}
                 }}
               >
-                <div className="absolute inset-0 -z-10 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{
-                  background:
-                    "radial-gradient(800px circle at var(--x,50%) var(--y,50%), hsl(var(--primary) / 0.14), transparent 40%)",
-                }} />
+                <div
+                  className="absolute inset-0 -z-10 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  style={{
+                    background:
+                      "radial-gradient(800px circle at var(--x,50%) var(--y,50%), hsl(var(--primary) / 0.14), transparent 40%)",
+                  }}
+                />
 
                 <div className="flex items-start justify-between gap-3">
                   <div className="pr-4">
-                    <h3 className="text-lg font-semibold break-words">{p.name}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground line-clamp-3">{p.description ?? "No description"}</p>
+                    <h3 className="text-lg font-semibold break-words">
+                      {p.name}
+                    </h3>
+                    <p className="mt-2 text-sm text-muted-foreground line-clamp-3">
+                      {p.description ?? "No description"}
+                    </p>
                   </div>
                   <div className="text-right text-sm text-muted-foreground flex-shrink-0">
                     <div className="inline-flex items-center gap-2">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4 text-muted-foreground">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        className="h-4 w-4 text-muted-foreground"
+                      >
                         <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.92.58.1.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.36-3.88-1.36-.53-1.35-1.3-1.71-1.3-1.71-1.06-.73.08-.72.08-.72 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.11-.76.41-1.27.74-1.56-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.99 0 1.99.13 2.9.39 2.21-1.5 3.18-1.18 3.18-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.09 0 4.41-2.7 5.39-5.27 5.67.42.36.8 1.1.8 2.22 0 1.61-.02 2.9-.02 3.3 0 .31.21.67.8.56A10.51 10.51 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5z" />
                       </svg>
                       <span>{p.stargazers_count}</span>
@@ -179,8 +212,19 @@ export default function Projects() {
 
                 <div className="mt-5 inline-flex items-center gap-2 text-sm text-gradient">
                   <span>More details</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-4">
-                    <path d="M5 12h12m0 0-5-5m5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="size-4"
+                  >
+                    <path
+                      d="M5 12h12m0 0-5-5m5 5-5 5"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
                   </svg>
                 </div>
               </a>
