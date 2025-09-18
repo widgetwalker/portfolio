@@ -22,19 +22,19 @@ export default function Index() {
           </div>
           <div className="rounded-xl border border-white/10 bg-card/60 p-6 backdrop-blur">
             <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Focus Areas</h3>
-            <ul className="mt-3 grid list-disc grid-cols-1 gap-2 pl-5 text-sm text-muted-foreground sm:grid-cols-2">
-              <li>Frontend Engineering</li>
-              <li>Design Systems</li>
-              <li>Developer Experience</li>
-              <li>Systems Programming</li>
-              <li>Machine Learning</li>
-              <li>Open Source</li>
-              <li>Creative Writing</li>
-              <li>Pencil Sketching</li>
-              <li>Amateur Psychology</li>
-              <li>Game Design</li>
-              <li>3D Modeling</li>
-              <li>Python Development</li>
+            <ul className="mt-3 grid list-disc grid-cols-1 gap-2 pl-5 text-sm sm:grid-cols-2">
+              <li className="text-indigo-300 font-semibold">Frontend Engineering</li>
+              <li className="text-rose-300 font-semibold">Design Systems</li>
+              <li className="text-sky-300 font-semibold">Developer Experience</li>
+              <li className="text-amber-300 font-semibold">Systems Programming</li>
+              <li className="text-emerald-300 font-semibold">Machine Learning</li>
+              <li className="text-violet-300 font-semibold">Open Source</li>
+              <li className="text-pink-300 font-semibold">Creative Writing</li>
+              <li className="text-orange-300 font-semibold">Pencil Sketching</li>
+              <li className="text-lime-300 font-semibold">Amateur Psychology</li>
+              <li className="text-fuchsia-300 font-semibold">Game Design</li>
+              <li className="text-cyan-300 font-semibold">3D Modeling</li>
+              <li className="text-yellow-300 font-semibold">Python Development</li>
             </ul>
           </div>
         </div>
