@@ -16,13 +16,34 @@ export default function Projects() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    const DEFAULT_REPOS: Repo[] = [
+      { id: 1, name: "ai-chat-bot", html_url: "https://github.com/widgetwalker/ai_chat_bot", description: "Chatbot using LLMs", language: "TypeScript", stargazers_count: 12 },
+      { id: 2, name: "image-caption", html_url: "https://github.com/widgetwalker/image-caption", description: "Image caption generator", language: "Python", stargazers_count: 8 },
+      { id: 3, name: "widgetwalker", html_url: "https://github.com/widgetwalker/widgetwalker", description: "Personal site & portfolio", language: "JavaScript", stargazers_count: 5 },
+    ];
+
     const fetchRepos = async () => {
       setLoading(true);
+      let controller = new AbortController();
+      const timeout = window.setTimeout(() => controller.abort(), 7000);
+
       try {
         const res = await fetch(
           "https://api.github.com/users/widgetwalker/repos?per_page=100&sort=updated",
+          { signal: controller.signal, headers: { Accept: "application/vnd.github.v3+json" } },
         );
-        if (!res.ok) throw new Error(`GitHub API ${res.status}`);
+
+        if (!res.ok) {
+          // If GitHub returns a 403 or rate-limit, present a helpful message and fallback
+          if (res.status === 403) {
+            setError("GitHub API rate limit reached or access forbidden. Showing cached projects.");
+          } else {
+            setError(`GitHub API error: ${res.status}`);
+          }
+          setRepos(DEFAULT_REPOS);
+          return;
+        }
+
         const data = (await res.json()) as any[];
         const filtered = data
           .filter((r) => !r.fork)
@@ -35,12 +56,16 @@ export default function Projects() {
             language: r.language,
             stargazers_count: r.stargazers_count,
           }));
-        setRepos(filtered);
+        setRepos(filtered.length ? filtered : DEFAULT_REPOS);
       } catch (e: any) {
-        console.error(e);
-        setError("Failed to load repositories");
+        console.error("Projects fetch error:", e);
+        // Network error (CORS, offline, blocked) or aborted, fallback to defaults
+        setError("Failed to fetch repositories — displaying cached projects.");
+        setRepos(DEFAULT_REPOS);
       } finally {
+        clearTimeout(timeout);
         setLoading(false);
+        controller = null as any;
       }
     };
 
