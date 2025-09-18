@@ -97,28 +97,59 @@ export default function Projects() {
                   el.style.removeProperty("--x");
                   el.style.removeProperty("--y");
                 }}
-                onMouseEnter={() => {
-                  // prefetch repo details into sessionStorage to speed up navigation
+                onMouseEnter={(e) => {
+                  // debounce prefetch: only fetch after 250ms hover to avoid many quick fetches
                   try {
+                    const el = e.currentTarget as HTMLElement;
                     const key = `repo:${p.name}`;
-                    if (!sessionStorage.getItem(key)) {
-                      fetch(`https://api.github.com/repos/widgetwalker/${p.name}`)
-                        .then((r) => r.ok ? r.json() : null)
-                        .then((data) => {
-                          if (data) sessionStorage.setItem(key, JSON.stringify(data));
-                        })
-                        .catch(() => {});
+                    // store timer on element dataset
+                    const timerKey = "data-prefetch-timer";
+                    const timerId = window.setTimeout(async () => {
+                      try {
+                        if (!sessionStorage.getItem(key)) {
+                          const controller = new AbortController();
+                          const sig = controller.signal;
+                          // small timeout for fetch
+                          const timeout = window.setTimeout(() => controller.abort(), 3000);
+                          try {
+                            const r = await fetch(`https://api.github.com/repos/widgetwalker/${p.name}`, { signal: sig });
+                            if (r.ok) {
+                              const data = await r.json();
+                              try {
+                                sessionStorage.setItem(key, JSON.stringify(data));
+                              } catch (e) {}
+                            }
+                          } catch (e) {
+                            // ignore network/fetch errors
+                          } finally {
+                            clearTimeout(timeout);
+                          }
+                        }
+                      } catch (e) {}
+                    }, 250);
+                    (el as any)[timerKey] = timerId;
+                  } catch (e) {}
+                }}
+                onMouseLeave={(e) => {
+                  try {
+                    const el = e.currentTarget as HTMLElement;
+                    const timerKey = "data-prefetch-timer";
+                    const id = (el as any)[timerKey];
+                    if (id) {
+                      clearTimeout(id);
+                      delete (el as any)[timerKey];
                     }
                   } catch (e) {}
                 }}
-                onFocus={() => {
+                onFocus={(e) => {
+                  // immediate prefetch on keyboard focus, but still throttled
                   try {
                     const key = `repo:${p.name}`;
                     if (!sessionStorage.getItem(key)) {
                       fetch(`https://api.github.com/repos/widgetwalker/${p.name}`)
                         .then((r) => r.ok ? r.json() : null)
                         .then((data) => {
-                          if (data) sessionStorage.setItem(key, JSON.stringify(data));
+                          if (data) try { sessionStorage.setItem(key, JSON.stringify(data)); } catch (e) {}
                         })
                         .catch(() => {});
                     }
