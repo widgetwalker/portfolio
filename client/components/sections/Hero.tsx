@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Animate from "@/components/Animate";
+import { useNavigate } from "react-router-dom";
 
 const TAGLINES = [
   "DHEERAJ doesn't build websites. He engineers digital adrenaline. Pixels obey. Code dances. The future watches.",
