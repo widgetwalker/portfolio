@@ -39,33 +39,40 @@ function ScrollToHash() {
   }, []);
 
   useEffect(() => {
-    if (!hash) return;
-    const id = hash.replace("#", "");
+    const runScrollToHash = () => {
+      const currentHash = window.location.hash || hash;
+      if (!currentHash) return;
+      const id = currentHash.replace("#", "");
 
-    let attempts = 0;
-    const maxAttempts = 12;
+      let attempts = 0;
+      const maxAttempts = 12;
 
-    const tryScroll = () => {
-      attempts += 1;
-      const el = document.getElementById(id);
-      if (el) {
-        const header = document.querySelector("header");
-        const headerHeight = header ? header.getBoundingClientRect().height : 88;
-        const rect = el.getBoundingClientRect();
-        const top = window.scrollY + rect.top - headerHeight - 12;
-        window.scrollTo({ top, behavior: "smooth" });
-        return;
-      }
-      if (attempts < maxAttempts) {
-        setTimeout(tryScroll, 80 + attempts * 30);
-      }
+      const tryScroll = () => {
+        attempts += 1;
+        const el = document.getElementById(id);
+        if (el) {
+          const header = document.querySelector("header");
+          const headerHeight = header ? header.getBoundingClientRect().height : 88;
+          const rect = el.getBoundingClientRect();
+          const top = window.scrollY + rect.top - headerHeight - 12;
+          window.scrollTo({ top, behavior: "smooth" });
+          return;
+        }
+        if (attempts < maxAttempts) {
+          setTimeout(tryScroll, 80 + attempts * 30);
+        }
+      };
+
+      // start after a short delay to let route render
+      setTimeout(tryScroll, 40);
     };
 
-    // start after a short delay to let route render
-    setTimeout(tryScroll, 40);
+    // run on location change and on hashchange
+    runScrollToHash();
+    window.addEventListener("hashchange", runScrollToHash);
 
     return () => {
-      attempts = maxAttempts;
+      window.removeEventListener("hashchange", runScrollToHash);
     };
   }, [hash, pathname]);
 
