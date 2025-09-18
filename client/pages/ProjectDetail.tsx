@@ -24,10 +24,23 @@ export default function ProjectDetail() {
     const fetchDetail = async () => {
       setLoading(true);
       try {
+        const key = `repo:${name}`;
+        const cached = sessionStorage.getItem(key);
+        if (cached) {
+          try {
+            setRepo(JSON.parse(cached));
+          } catch (e) {
+            // ignore
+          }
+        }
+
         const res = await fetch(`https://api.github.com/repos/widgetwalker/${name}`);
         if (!res.ok) throw new Error(`GitHub repo ${res.status}`);
         const data = await res.json();
         setRepo(data);
+        try {
+          sessionStorage.setItem(key, JSON.stringify(data));
+        } catch (e) {}
       } catch (e: any) {
         console.error(e);
         setError("Could not load repository details.");
