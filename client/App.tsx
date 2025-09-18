@@ -15,17 +15,42 @@ import SiteFooter from "@/components/layout/SiteFooter";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
+function setHeaderCssVar() {
+  const header = document.querySelector("header");
+  const h = header ? Math.ceil(header.getBoundingClientRect().height) : 88;
+  document.documentElement.style.setProperty("--header-height", `${h}px`);
+}
+
 function ScrollToHash() {
   const { hash, pathname } = useLocation();
 
   useEffect(() => {
+    // set CSS var on load and on resize
+    setHeaderCssVar();
+    const ro = new ResizeObserver(() => setHeaderCssVar());
+    const header = document.querySelector("header");
+    if (header) ro.observe(header);
+    window.addEventListener("resize", setHeaderCssVar);
+
+    return () => {
+      window.removeEventListener("resize", setHeaderCssVar);
+      if (header) ro.unobserve(header);
+    };
+  }, []);
+
+  useEffect(() => {
     if (!hash) return;
-    // small timeout to allow page render
     const id = hash.replace("#", "");
+    // small timeout to allow page render
     setTimeout(() => {
       const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 50);
+      if (!el) return;
+      const header = document.querySelector("header");
+      const headerHeight = header ? header.getBoundingClientRect().height : 88;
+      const rect = el.getBoundingClientRect();
+      const top = window.scrollY + rect.top - headerHeight - 12;
+      window.scrollTo({ top, behavior: "smooth" });
+    }, 60);
   }, [hash, pathname]);
 
   return null;
