@@ -66,10 +66,7 @@ export default function Hero() {
               <button
                 onClick={(e) => {
                   e.preventDefault();
-                  // navigate to root with hash - ScrollToHash will handle scrolling
-                  window.history.pushState({}, "", "/#projects");
-                  const navEvent = new HashChangeEvent("hashchange");
-                  window.dispatchEvent(navEvent);
+                  const navigate = useNavigate();
                 }}
                 className="inline-flex items-center justify-center rounded-md border border-white/10 bg-gradient-to-r from-primary to-accent px-5 py-3 text-sm font-semibold text-primary-foreground shadow transition hover:opacity-90"
               >
@@ -78,9 +75,7 @@ export default function Hero() {
               <button
                 onClick={(e) => {
                   e.preventDefault();
-                  window.history.pushState({}, "", "/#contact");
-                  const navEvent = new HashChangeEvent("hashchange");
-                  window.dispatchEvent(navEvent);
+                  const navigate = useNavigate();
                 }}
                 className="inline-flex items-center justify-center rounded-md border border-white/10 bg-card px-5 py-3 text-sm font-semibold text-foreground hover:bg-muted/30"
               >
