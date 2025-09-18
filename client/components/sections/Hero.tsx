@@ -11,6 +11,7 @@ const TAGLINES = [
 export default function Hero() {
   const [tagIndex, setTagIndex] = useState(0);
   const [visible, setVisible] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => {
