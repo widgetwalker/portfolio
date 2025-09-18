@@ -3,22 +3,40 @@ import Animate from "@/components/Animate";
 
 const items = [
   {
-    time: "2024 — Present",
-    title: "B.Tech in Computer Science",
-    place: "University of Technology",
-    details: "Coursework in algorithms, data structures, operating systems, and machine learning.",
+    time: "2023 — Present",
+    title: "BSc (Hons) Computer Science",
+    place: "Pondicherry University",
+    details: "BSc Honors in Computer Science. Current CGPA: 8.6. Coursework includes DSA, OOP, systems programming and ML.",
+  },
+  {
+    time: "Present",
+    title: "Intern — AICPECF",
+    place: "AICPECF",
+    details: "Currently interning at AICPECF working on software and 3D modelling related tasks.",
   },
   {
     time: "2023",
-    title: "Hackathon Finalist",
-    place: "DevFest",
-    details: "Built an AI-powered productivity assistant with realtime collaboration.",
+    title: "Class 12 — Sainik School Korukonda",
+    place: "Sainik School Korukonda",
+    details: "Completed Class 12 with focus on Computer Science and STEM subjects.",
   },
   {
-    time: "2022",
-    title: "Open Source",
-    place: "Various",
-    details: "Contributed PRs to UI libraries and docs tooling improving DX and accessibility.",
+    time: "2023",
+    title: "Regional Conclave — Awards",
+    place: "The Institution of Engineers (India)",
+    details: "4th Regional Conclave: 1st Prize — Project Competition; 2nd Prize — Model/Idea Competition.",
+  },
+  {
+    time: "2022 — 2023",
+    title: "Hackathons & Competitions",
+    place: "Smart India Hackathon & others",
+    details: "Led a team at the Smart India Hackathon; acted as system software developer for teams that placed in Innovation in IoT.",
+  },
+  {
+    time: "2021 — 2024",
+    title: "Projects & Certifications",
+    place: "Personal / Internship",
+    details: "Notable projects: low-poly games, 3D Viewer, image-caption generator, personal financer, task automation, SQL-Python based card mechanics, web-scraper. Internship at AICPECF.",
   },
 ];
 
