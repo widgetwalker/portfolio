@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
-import { useNavigate, useLocation } from "react-router-dom";
-
 const nav = [
   { href: "#about", label: "About" },
   { href: "#projects", label: "Projects" },
@@ -12,13 +10,23 @@ const nav = [
 
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
-  const navigate = useNavigate();
-  const location = useLocation();
 
   const handleNavClick = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
-    const target = `/${href}`; // e.g. '/#about'
-    if (location.pathname + location.hash !== target) navigate(target, { replace: false });
+    if (window.location.hash !== href) {
+      // update hash which ScrollToHash listens to
+      window.location.hash = href;
+    } else {
+      // already on same hash, still trigger scroll
+      const el = document.getElementById(href.replace("#", ""));
+      if (el) {
+        const header = document.querySelector("header");
+        const headerHeight = header ? header.getBoundingClientRect().height : 88;
+        const rect = el.getBoundingClientRect();
+        const top = window.scrollY + rect.top - headerHeight - 12;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    }
   };
 
   return (
