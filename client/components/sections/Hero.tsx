@@ -66,7 +66,10 @@ export default function Hero() {
               <button
                 onClick={(e) => {
                   e.preventDefault();
-                  navigate('/#projects');
+                  if (window.location.hash !== '#projects') window.location.hash = '#projects'; else {
+                    const el = document.getElementById('projects');
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
                 }}
                 className="inline-flex items-center justify-center rounded-md border border-white/10 bg-gradient-to-r from-primary to-accent px-5 py-3 text-sm font-semibold text-primary-foreground shadow transition hover:opacity-90"
               >
@@ -75,7 +78,10 @@ export default function Hero() {
               <button
                 onClick={(e) => {
                   e.preventDefault();
-                  navigate('/#contact');
+                  if (window.location.hash !== '#contact') window.location.hash = '#contact'; else {
+                    const el = document.getElementById('contact');
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
                 }}
                 className="inline-flex items-center justify-center rounded-md border border-white/10 bg-card px-5 py-3 text-sm font-semibold text-foreground hover:bg-muted/30"
               >
