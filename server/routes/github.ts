@@ -8,10 +8,8 @@ export const handleGitHubRepos: RequestHandler = async (req, res) => {
     const response = await fetch(url, {
       headers: {
         Accept: "application/vnd.github.v3+json",
-        // You can add a GitHub token via env var to increase rate limits: Authorization: `token ${process.env.GITHUB_TOKEN}`
         ...(process.env.GITHUB_TOKEN ? { Authorization: `token ${process.env.GITHUB_TOKEN}` } : {}),
       },
-      // no signal here; let server handle timing
     });
 
     const data = await response.json();
@@ -19,5 +17,25 @@ export const handleGitHubRepos: RequestHandler = async (req, res) => {
   } catch (e: any) {
     console.error("GitHub proxy error:", e);
     res.status(500).json({ message: "Failed to fetch from GitHub" });
+  }
+};
+
+export const handleGitHubRepoDetail: RequestHandler = async (req, res) => {
+  try {
+    const username = (req.query.username as string) || "widgetwalker";
+    const name = (req.query.name as string) || "";
+    if (!name) return res.status(400).json({ message: "Missing repo name" });
+    const url = `https://api.github.com/repos/${encodeURIComponent(username)}/${encodeURIComponent(name)}`;
+    const response = await fetch(url, {
+      headers: {
+        Accept: "application/vnd.github.v3+json",
+        ...(process.env.GITHUB_TOKEN ? { Authorization: `token ${process.env.GITHUB_TOKEN}` } : {}),
+      },
+    });
+    const data = await response.json();
+    res.status(response.status).json(data);
+  } catch (e: any) {
+    console.error("GitHub detail proxy error:", e);
+    res.status(500).json({ message: "Failed to fetch repo detail" });
   }
 };
