@@ -164,11 +164,16 @@ export default function Projects() {
                             3000,
                           );
                           try {
-                            const r = await fetch(
-                              `https://api.github.com/repos/widgetwalker/${p.name}`,
-                              { signal: sig },
-                            );
-                            if (r.ok) {
+                            let r: Response | null = null;
+                            try {
+                              r = await fetch(`/api/github/repo?username=widgetwalker&name=${encodeURIComponent(p.name)}`, { signal: sig });
+                            } catch {}
+                            if (!r || !r.ok) {
+                              try {
+                                r = await fetch(`https://api.github.com/repos/widgetwalker/${p.name}`, { signal: sig, headers: { Accept: "application/vnd.github.v3+json" } });
+                              } catch {}
+                            }
+                            if (r && r.ok) {
                               const data = await r.json();
                               try {
                                 sessionStorage.setItem(
@@ -204,17 +209,25 @@ export default function Projects() {
                   try {
                     const key = `repo:${p.name}`;
                     if (!sessionStorage.getItem(key)) {
-                      fetch(
-                        `https://api.github.com/repos/widgetwalker/${p.name}`,
-                      )
-                        .then((r) => (r.ok ? r.json() : null))
-                        .then((data) => {
-                          if (data)
+                      (async () => {
+                        try {
+                          let r: Response | null = null;
+                          try {
+                            r = await fetch(`/api/github/repo?username=widgetwalker&name=${encodeURIComponent(p.name)}`);
+                          } catch {}
+                          if (!r || !r.ok) {
+                            try {
+                              r = await fetch(`https://api.github.com/repos/widgetwalker/${p.name}`, { headers: { Accept: "application/vnd.github.v3+json" } });
+                            } catch {}
+                          }
+                          if (r && r.ok) {
+                            const data = await r.json();
                             try {
                               sessionStorage.setItem(key, JSON.stringify(data));
                             } catch (e) {}
-                        })
-                        .catch(() => {});
+                          }
+                        } catch {}
+                      })();
                     }
                   } catch (e) {}
                 }}
