@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
+import { GITHUB_USERNAME } from "@/lib/config";
 
 type RepoDetail = {
   id: number;
@@ -15,12 +16,15 @@ type RepoDetail = {
 
 export default function ProjectDetail() {
   const { name } = useParams();
+  const location = useLocation();
   const [repo, setRepo] = useState<RepoDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!name) return;
+    const params = new URLSearchParams(location.search);
+    const id = params.get("id");
+    if (!name && !id) return;
     const fetchDetail = async () => {
       setLoading(true);
       try {
@@ -39,16 +43,27 @@ export default function ProjectDetail() {
         let res: Response | null = null;
         try {
           // Try proxy first (works in dev or if a serverless function exists)
-          res = await fetch(`/api/github/repo?username=widgetwalker&name=${encodeURIComponent(name)}`, { signal: controller.signal });
+          if (id) {
+            res = await fetch(`/api/github/repo?id=${encodeURIComponent(id)}`, { signal: controller.signal });
+          } else if (name) {
+            res = await fetch(`/api/github/repo?username=${encodeURIComponent(GITHUB_USERNAME)}&name=${encodeURIComponent(name)}`, { signal: controller.signal });
+          }
         } catch (err) {
           res = null;
         }
         if (!res || !res.ok) {
           // Fallback to direct GitHub API
-          res = await fetch(`https://api.github.com/repos/widgetwalker/${name}`, {
-            signal: controller.signal,
-            headers: { Accept: "application/vnd.github.v3+json" },
-          });
+          if (id) {
+            res = await fetch(`https://api.github.com/repositories/${id}`, {
+              signal: controller.signal,
+              headers: { Accept: "application/vnd.github.v3+json" },
+            });
+          } else if (name) {
+            res = await fetch(`https://api.github.com/repos/${encodeURIComponent(GITHUB_USERNAME)}/${encodeURIComponent(name)}`, {
+              signal: controller.signal,
+              headers: { Accept: "application/vnd.github.v3+json" },
+            });
+          }
         }
         if (!res.ok) throw new Error(`GitHub repo ${res.status}`);
         const data = await res.json();
