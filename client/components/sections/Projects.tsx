@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Animate from "@/components/Animate";
 
+import { GITHUB_USERNAME } from "@/lib/config";
+
 type Repo = {
   id: number;
   name: string;
@@ -17,9 +19,9 @@ export default function Projects() {
 
   useEffect(() => {
     const DEFAULT_REPOS: Repo[] = [
-      { id: 1, name: "ai-chat-bot", html_url: "https://github.com/widgetwalker/ai_chat_bot", description: "Chatbot using LLMs", language: "TypeScript", stargazers_count: 12 },
-      { id: 2, name: "image-caption", html_url: "https://github.com/widgetwalker/image-caption", description: "Image caption generator", language: "Python", stargazers_count: 8 },
-      { id: 3, name: "widgetwalker", html_url: "https://github.com/widgetwalker/widgetwalker", description: "Personal site & portfolio", language: "JavaScript", stargazers_count: 5 },
+      { id: 1, name: "ai-chat-bot", html_url: `https://github.com/${GITHUB_USERNAME}/ai_chat_bot`, description: "Chatbot using LLMs", language: "TypeScript", stargazers_count: 12 },
+      { id: 2, name: "image-caption", html_url: `https://github.com/${GITHUB_USERNAME}/image-caption`, description: "Image caption generator", language: "Python", stargazers_count: 8 },
+      { id: 3, name: GITHUB_USERNAME, html_url: `https://github.com/${GITHUB_USERNAME}/${GITHUB_USERNAME}` as any, description: "Personal site & portfolio", language: "JavaScript", stargazers_count: 5 },
     ];
 
     const fetchRepos = async () => {
@@ -31,7 +33,7 @@ export default function Projects() {
         // Try server-side proxy first to avoid CORS/network issues
         let res = null as Response | null;
         try {
-          res = await fetch(`/api/github/repos?username=widgetwalker`, { signal: controller.signal });
+          res = await fetch(`/api/github/repos?username=${encodeURIComponent(GITHUB_USERNAME)}`, { signal: controller.signal });
         } catch (err) {
           // proxy failed (likely not running in static deploy), fallback to direct GitHub
           res = null;
@@ -41,7 +43,7 @@ export default function Projects() {
           // fallback to direct GitHub API call
           try {
             res = await fetch(
-              "https://api.github.com/users/widgetwalker/repos?per_page=100&sort=updated",
+              `https://api.github.com/users/${encodeURIComponent(GITHUB_USERNAME)}/repos?per_page=100&sort=updated`,
               { signal: controller.signal, headers: { Accept: "application/vnd.github.v3+json" } },
             );
           } catch (err) {
@@ -97,11 +99,11 @@ export default function Projects() {
             Featured Projects
           </h2>
           <p className="mt-2 text-muted-foreground">
-            A selection of repos from GitHub ({"@widgetwalker"}).
+            A selection of repos from GitHub ({`@${GITHUB_USERNAME}`}).
           </p>
         </div>
         <a
-          href="https://github.com/widgetwalker"
+          href={`https://github.com/${GITHUB_USERNAME}`}
           target="_blank"
           rel="noreferrer noopener"
           className="hidden rounded-md border border-white/10 bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-muted/30 md:inline"
@@ -131,7 +133,7 @@ export default function Projects() {
           repos.map((p) => (
             <Animate key={p.id} className="relative">
               <a
-                href={`/projects/${encodeURIComponent(p.name)}`}
+                href={`/projects/${encodeURIComponent(p.name)}?id=${p.id}`}
                 className="group relative overflow-hidden rounded-xl border border-white/10 bg-card/60 p-5 transition hover:bg-card/80 card-hover hover-glow hover-pop h-full flex flex-col justify-between"
                 onMouseMove={(e) => {
                   const el = e.currentTarget as HTMLElement;
@@ -166,11 +168,11 @@ export default function Projects() {
                           try {
                             let r: Response | null = null;
                             try {
-                              r = await fetch(`/api/github/repo?username=widgetwalker&name=${encodeURIComponent(p.name)}`, { signal: sig });
+                              r = await fetch(`/api/github/repo?id=${p.id}` as any, { signal: sig });
                             } catch {}
                             if (!r || !r.ok) {
                               try {
-                                r = await fetch(`https://api.github.com/repos/widgetwalker/${p.name}`, { signal: sig, headers: { Accept: "application/vnd.github.v3+json" } });
+                                r = await fetch(`https://api.github.com/repositories/${p.id}`, { signal: sig, headers: { Accept: "application/vnd.github.v3+json" } });
                               } catch {}
                             }
                             if (r && r.ok) {
@@ -213,11 +215,11 @@ export default function Projects() {
                         try {
                           let r: Response | null = null;
                           try {
-                            r = await fetch(`/api/github/repo?username=widgetwalker&name=${encodeURIComponent(p.name)}`);
+                            r = await fetch(`/api/github/repo?id=${p.id}` as any);
                           } catch {}
                           if (!r || !r.ok) {
                             try {
-                              r = await fetch(`https://api.github.com/repos/widgetwalker/${p.name}`, { headers: { Accept: "application/vnd.github.v3+json" } });
+                              r = await fetch(`https://api.github.com/repositories/${p.id}`, { headers: { Accept: "application/vnd.github.v3+json" } });
                             } catch {}
                           }
                           if (r && r.ok) {
