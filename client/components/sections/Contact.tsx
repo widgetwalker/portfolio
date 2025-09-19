@@ -16,7 +16,7 @@ export default function Contact() {
             Email me
           </a>
           <a
-            href="https://github.com/widgetwalker"
+            href={`https://github.com/${import.meta.env.VITE_GITHUB_USERNAME || 'widgetwalker'}`}
             target="_blank"
             rel="noreferrer noopener"
             className="inline-flex items-center justify-center rounded-md border border-white/10 bg-card px-5 py-3 text-sm font-semibold text-foreground hover:bg-muted/30"
