@@ -21,10 +21,12 @@ export const handleGitHubRepos: RequestHandler = async (req, res) => {
 
 export const handleGitHubRepoDetail: RequestHandler = async (req, res) => {
   try {
+    const id = req.query.id as string | undefined;
     const username = (req.query.username as string) || "widgetwalker";
     const name = (req.query.name as string) || "";
-    if (!name) return res.status(400).json({ message: "Missing repo name" });
-    const url = `https://api.github.com/repos/${encodeURIComponent(username)}/${encodeURIComponent(name)}`;
+    const url = id
+      ? `https://api.github.com/repositories/${encodeURIComponent(id)}`
+      : `https://api.github.com/repos/${encodeURIComponent(username)}/${encodeURIComponent(name)}`;
     const response = await fetch(url, {
       headers: {
         Accept: "application/vnd.github.v3+json",
