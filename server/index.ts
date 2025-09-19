@@ -2,7 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
-import { handleGitHubRepos } from "./routes/github";
+import { handleGitHubRepos, handleGitHubRepoDetail } from "./routes/github";
 
 export function createServer() {
   const app = express();
@@ -20,6 +20,7 @@ export function createServer() {
 
   app.get("/api/demo", handleDemo);
   app.get("/api/github/repos", handleGitHubRepos);
+  app.get("/api/github/repo", handleGitHubRepoDetail);
 
   return app;
 }
