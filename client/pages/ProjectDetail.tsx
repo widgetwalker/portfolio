@@ -34,15 +34,29 @@ export default function ProjectDetail() {
           }
         }
 
-        const res = await fetch(
-          `https://api.github.com/repos/widgetwalker/${name}`,
-        );
+        let controller = new AbortController();
+        const t = window.setTimeout(() => controller.abort(), 7000);
+        let res: Response | null = null;
+        try {
+          // Try proxy first (works in dev or if a serverless function exists)
+          res = await fetch(`/api/github/repo?username=widgetwalker&name=${encodeURIComponent(name)}`, { signal: controller.signal });
+        } catch (err) {
+          res = null;
+        }
+        if (!res || !res.ok) {
+          // Fallback to direct GitHub API
+          res = await fetch(`https://api.github.com/repos/widgetwalker/${name}`, {
+            signal: controller.signal,
+            headers: { Accept: "application/vnd.github.v3+json" },
+          });
+        }
         if (!res.ok) throw new Error(`GitHub repo ${res.status}`);
         const data = await res.json();
         setRepo(data);
         try {
           sessionStorage.setItem(key, JSON.stringify(data));
         } catch (e) {}
+        clearTimeout(t);
       } catch (e: any) {
         console.error(e);
         setError("Could not load repository details.");
