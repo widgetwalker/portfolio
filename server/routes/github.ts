@@ -7,7 +7,9 @@ export const handleGitHubRepos: RequestHandler = async (req, res) => {
     const response = await fetch(url, {
       headers: {
         Accept: "application/vnd.github.v3+json",
-        ...(process.env.GITHUB_TOKEN ? { Authorization: `token ${process.env.GITHUB_TOKEN}` } : {}),
+        ...(process.env.GITHUB_TOKEN
+          ? { Authorization: `token ${process.env.GITHUB_TOKEN}` }
+          : {}),
       },
     });
 
@@ -30,7 +32,9 @@ export const handleGitHubRepoDetail: RequestHandler = async (req, res) => {
     const response = await fetch(url, {
       headers: {
         Accept: "application/vnd.github.v3+json",
-        ...(process.env.GITHUB_TOKEN ? { Authorization: `token ${process.env.GITHUB_TOKEN}` } : {}),
+        ...(process.env.GITHUB_TOKEN
+          ? { Authorization: `token ${process.env.GITHUB_TOKEN}` }
+          : {}),
       },
     });
     const data = await response.json();

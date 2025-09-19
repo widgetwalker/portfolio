@@ -44,9 +44,14 @@ export default function ProjectDetail() {
         try {
           // Try proxy first (works in dev or if a serverless function exists)
           if (id) {
-            res = await fetch(`/api/github/repo?id=${encodeURIComponent(id)}`, { signal: controller.signal });
+            res = await fetch(`/api/github/repo?id=${encodeURIComponent(id)}`, {
+              signal: controller.signal,
+            });
           } else if (name) {
-            res = await fetch(`/api/github/repo?username=${encodeURIComponent(GITHUB_USERNAME)}&name=${encodeURIComponent(name)}`, { signal: controller.signal });
+            res = await fetch(
+              `/api/github/repo?username=${encodeURIComponent(GITHUB_USERNAME)}&name=${encodeURIComponent(name)}`,
+              { signal: controller.signal },
+            );
           }
         } catch (err) {
           res = null;
@@ -59,10 +64,13 @@ export default function ProjectDetail() {
               headers: { Accept: "application/vnd.github.v3+json" },
             });
           } else if (name) {
-            res = await fetch(`https://api.github.com/repos/${encodeURIComponent(GITHUB_USERNAME)}/${encodeURIComponent(name)}`, {
-              signal: controller.signal,
-              headers: { Accept: "application/vnd.github.v3+json" },
-            });
+            res = await fetch(
+              `https://api.github.com/repos/${encodeURIComponent(GITHUB_USERNAME)}/${encodeURIComponent(name)}`,
+              {
+                signal: controller.signal,
+                headers: { Accept: "application/vnd.github.v3+json" },
+              },
+            );
           }
         }
         if (!res.ok) throw new Error(`GitHub repo ${res.status}`);

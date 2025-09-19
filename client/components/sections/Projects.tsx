@@ -19,9 +19,31 @@ export default function Projects() {
 
   useEffect(() => {
     const DEFAULT_REPOS: Repo[] = [
-      { id: 1, name: "ai-chat-bot", html_url: `https://github.com/${GITHUB_USERNAME}/ai_chat_bot`, description: "Chatbot using LLMs", language: "TypeScript", stargazers_count: 12 },
-      { id: 2, name: "image-caption", html_url: `https://github.com/${GITHUB_USERNAME}/image-caption`, description: "Image caption generator", language: "Python", stargazers_count: 8 },
-      { id: 3, name: GITHUB_USERNAME, html_url: `https://github.com/${GITHUB_USERNAME}/${GITHUB_USERNAME}` as any, description: "Personal site & portfolio", language: "JavaScript", stargazers_count: 5 },
+      {
+        id: 1,
+        name: "ai-chat-bot",
+        html_url: `https://github.com/${GITHUB_USERNAME}/ai_chat_bot`,
+        description: "Chatbot using LLMs",
+        language: "TypeScript",
+        stargazers_count: 12,
+      },
+      {
+        id: 2,
+        name: "image-caption",
+        html_url: `https://github.com/${GITHUB_USERNAME}/image-caption`,
+        description: "Image caption generator",
+        language: "Python",
+        stargazers_count: 8,
+      },
+      {
+        id: 3,
+        name: GITHUB_USERNAME,
+        html_url:
+          `https://github.com/${GITHUB_USERNAME}/${GITHUB_USERNAME}` as any,
+        description: "Personal site & portfolio",
+        language: "JavaScript",
+        stargazers_count: 5,
+      },
     ];
 
     const fetchRepos = async () => {
@@ -33,7 +55,10 @@ export default function Projects() {
         // Try server-side proxy first to avoid CORS/network issues
         let res = null as Response | null;
         try {
-          res = await fetch(`/api/github/repos?username=${encodeURIComponent(GITHUB_USERNAME)}`, { signal: controller.signal });
+          res = await fetch(
+            `/api/github/repos?username=${encodeURIComponent(GITHUB_USERNAME)}`,
+            { signal: controller.signal },
+          );
         } catch (err) {
           // proxy failed (likely not running in static deploy), fallback to direct GitHub
           res = null;
@@ -44,7 +69,10 @@ export default function Projects() {
           try {
             res = await fetch(
               `https://api.github.com/users/${encodeURIComponent(GITHUB_USERNAME)}/repos?per_page=100&sort=updated`,
-              { signal: controller.signal, headers: { Accept: "application/vnd.github.v3+json" } },
+              {
+                signal: controller.signal,
+                headers: { Accept: "application/vnd.github.v3+json" },
+              },
             );
           } catch (err) {
             // network error
@@ -55,7 +83,9 @@ export default function Projects() {
         if (!res.ok) {
           // If GitHub returns a 403 or rate-limit, present a helpful message and fallback
           if (res.status === 403) {
-            setError("GitHub API rate limit reached or access forbidden. Showing cached projects.");
+            setError(
+              "GitHub API rate limit reached or access forbidden. Showing cached projects.",
+            );
           } else {
             setError(`GitHub API error: ${res.status}`);
           }
@@ -168,11 +198,22 @@ export default function Projects() {
                           try {
                             let r: Response | null = null;
                             try {
-                              r = await fetch(`/api/github/repo?id=${p.id}` as any, { signal: sig });
+                              r = await fetch(
+                                `/api/github/repo?id=${p.id}` as any,
+                                { signal: sig },
+                              );
                             } catch {}
                             if (!r || !r.ok) {
                               try {
-                                r = await fetch(`https://api.github.com/repositories/${p.id}`, { signal: sig, headers: { Accept: "application/vnd.github.v3+json" } });
+                                r = await fetch(
+                                  `https://api.github.com/repositories/${p.id}`,
+                                  {
+                                    signal: sig,
+                                    headers: {
+                                      Accept: "application/vnd.github.v3+json",
+                                    },
+                                  },
+                                );
                               } catch {}
                             }
                             if (r && r.ok) {
@@ -215,11 +256,20 @@ export default function Projects() {
                         try {
                           let r: Response | null = null;
                           try {
-                            r = await fetch(`/api/github/repo?id=${p.id}` as any);
+                            r = await fetch(
+                              `/api/github/repo?id=${p.id}` as any,
+                            );
                           } catch {}
                           if (!r || !r.ok) {
                             try {
-                              r = await fetch(`https://api.github.com/repositories/${p.id}`, { headers: { Accept: "application/vnd.github.v3+json" } });
+                              r = await fetch(
+                                `https://api.github.com/repositories/${p.id}`,
+                                {
+                                  headers: {
+                                    Accept: "application/vnd.github.v3+json",
+                                  },
+                                },
+                              );
                             } catch {}
                           }
                           if (r && r.ok) {
