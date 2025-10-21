@@ -176,11 +176,6 @@ export default function Projects() {
                   el.style.setProperty("--x", `${(x / r.width) * 100}%`);
                   el.style.setProperty("--y", `${(y / r.height) * 100}%`);
                 }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget as HTMLElement;
-                  el.style.removeProperty("--x");
-                  el.style.removeProperty("--y");
-                }}
                 onMouseEnter={(e) => {
                   // debounce prefetch: only fetch after 250ms hover to avoid many quick fetches
                   try {
@@ -244,6 +239,12 @@ export default function Projects() {
                 onMouseLeave={(e) => {
                   try {
                     const el = e.currentTarget as HTMLElement;
+                    // remove hover CSS variables
+                    try {
+                      el.style.removeProperty("--x");
+                      el.style.removeProperty("--y");
+                    } catch (err) {}
+
                     const timerKey = "data-prefetch-timer";
                     const id = (el as any)[timerKey];
                     if (id) {
