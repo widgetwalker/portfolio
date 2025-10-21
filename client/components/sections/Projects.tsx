@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Animate from "@/components/Animate";
 
 import { GITHUB_USERNAME } from "@/lib/config";
+import { safeFetch } from "@/lib/utils";
 
 type Repo = {
   id: number;
@@ -55,9 +56,10 @@ export default function Projects() {
         // Try server-side proxy first to avoid CORS/network issues
         let res = null as Response | null;
         try {
-          res = await fetch(
+          res = await safeFetch(
             `/api/github/repos?username=${encodeURIComponent(GITHUB_USERNAME)}`,
             { signal: controller.signal },
+            7000,
           );
         } catch (err) {
           // proxy failed (likely not running in static deploy), fallback to direct GitHub
@@ -67,12 +69,13 @@ export default function Projects() {
         if (!res || !res.ok) {
           // fallback to direct GitHub API call
           try {
-            res = await fetch(
+            res = await safeFetch(
               `https://api.github.com/users/${encodeURIComponent(GITHUB_USERNAME)}/repos?per_page=100&sort=updated`,
               {
                 signal: controller.signal,
                 headers: { Accept: "application/vnd.github.v3+json" },
               },
+              7000,
             );
           } catch (err) {
             // network error
@@ -198,14 +201,15 @@ export default function Projects() {
                           try {
                             let r: Response | null = null;
                             try {
-                              r = await fetch(
+                              r = await safeFetch(
                                 `/api/github/repo?id=${p.id}` as any,
                                 { signal: sig },
+                                3000,
                               );
                             } catch {}
                             if (!r || !r.ok) {
                               try {
-                                r = await fetch(
+                                r = await safeFetch(
                                   `https://api.github.com/repositories/${p.id}`,
                                   {
                                     signal: sig,
@@ -213,6 +217,7 @@ export default function Projects() {
                                       Accept: "application/vnd.github.v3+json",
                                     },
                                   },
+                                  3000,
                                 );
                               } catch {}
                             }
@@ -256,20 +261,23 @@ export default function Projects() {
                         try {
                           let r: Response | null = null;
                           try {
-                            r = await fetch(
-                              `/api/github/repo?id=${p.id}` as any,
-                            );
+                            r = await safeFetch(
+                            `/api/github/repo?id=${p.id}` as any,
+                            undefined,
+                            3000,
+                          );
                           } catch {}
                           if (!r || !r.ok) {
                             try {
-                              r = await fetch(
-                                `https://api.github.com/repositories/${p.id}`,
-                                {
-                                  headers: {
-                                    Accept: "application/vnd.github.v3+json",
-                                  },
+                              r = await safeFetch(
+                              `https://api.github.com/repositories/${p.id}`,
+                              {
+                                headers: {
+                                  Accept: "application/vnd.github.v3+json",
                                 },
-                              );
+                              },
+                              3000,
+                            );
                             } catch {}
                           }
                           if (r && r.ok) {
