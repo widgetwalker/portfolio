@@ -263,22 +263,22 @@ export default function Projects() {
                           let r: Response | null = null;
                           try {
                             r = await safeFetch(
-                            `/api/github/repo?id=${p.id}` as any,
-                            undefined,
-                            3000,
-                          );
+                              `/api/github/repo?id=${p.id}` as any,
+                              undefined,
+                              3000,
+                            );
                           } catch {}
                           if (!r || !r.ok) {
                             try {
                               r = await safeFetch(
-                              `https://api.github.com/repositories/${p.id}`,
-                              {
-                                headers: {
-                                  Accept: "application/vnd.github.v3+json",
+                                `https://api.github.com/repositories/${p.id}`,
+                                {
+                                  headers: {
+                                    Accept: "application/vnd.github.v3+json",
+                                  },
                                 },
-                              },
-                              3000,
-                            );
+                                3000,
+                              );
                             } catch {}
                           }
                           if (r && r.ok) {

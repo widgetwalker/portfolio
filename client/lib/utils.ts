@@ -29,8 +29,7 @@ export async function safeFetch(
     return response;
   } catch (e: any) {
     // If the request was aborted, suppress noisy logs and return null so callers can fallback safely
-    const isAbort =
-      e && (e.name === "AbortError" || e instanceof DOMException);
+    const isAbort = e && (e.name === "AbortError" || e instanceof DOMException);
     if (!isAbort) {
       console.warn("safeFetch error:", e);
     }
