@@ -27,9 +27,13 @@ export async function safeFetch(
   try {
     const response = await fetch(input, { ...(init || {}), signal });
     return response;
-  } catch (e) {
-    // swallow network errors and return null so callers can fallback safely
-    console.warn("safeFetch error:", e);
+  } catch (e: any) {
+    // If the request was aborted, suppress noisy logs and return null so callers can fallback safely
+    const isAbort =
+      e && (e.name === "AbortError" || e instanceof DOMException);
+    if (!isAbort) {
+      console.warn("safeFetch error:", e);
+    }
     return null;
   } finally {
     clearTimeout(timeout);
