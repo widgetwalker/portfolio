@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Animate from "@/components/Animate";
+import { Link } from "react-router-dom";
 
 import { GITHUB_USERNAME } from "@/lib/config";
 import { safeFetch } from "@/lib/utils";
