@@ -32,7 +32,9 @@ function ScrollToHash() {
 
     const update = () => {
       const headerEl = document.querySelector("header");
-      const h = headerEl ? Math.ceil(headerEl.getBoundingClientRect().height) : 88;
+      const h = headerEl
+        ? Math.ceil(headerEl.getBoundingClientRect().height)
+        : 88;
       if (prevHeaderHeight !== h) {
         prevHeaderHeight = h;
         document.documentElement.style.setProperty("--header-height", `${h}px`);
