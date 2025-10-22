@@ -25,16 +25,44 @@ function ScrollToHash() {
   const { hash, pathname } = useLocation();
 
   useEffect(() => {
-    // set CSS var on load and on resize
+    // set CSS var on load and on resize, debounce updates to avoid ResizeObserver loop
     setHeaderCssVar();
-    const ro = new ResizeObserver(() => setHeaderCssVar());
+    let prevHeaderHeight: number | null = null;
+    let rafId: number | null = null;
+
+    const update = () => {
+      const headerEl = document.querySelector("header");
+      const h = headerEl ? Math.ceil(headerEl.getBoundingClientRect().height) : 88;
+      if (prevHeaderHeight !== h) {
+        prevHeaderHeight = h;
+        document.documentElement.style.setProperty("--header-height", `${h}px`);
+      }
+    };
+
+    const ro = new ResizeObserver(() => {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(update) as unknown as number;
+    });
+
     const header = document.querySelector("header");
     if (header) ro.observe(header);
-    window.addEventListener("resize", setHeaderCssVar);
+
+    const resizeHandler = () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(update) as unknown as number;
+    };
+
+    window.addEventListener("resize", resizeHandler);
 
     return () => {
-      window.removeEventListener("resize", setHeaderCssVar);
-      if (header) ro.unobserve(header);
+      window.removeEventListener("resize", resizeHandler);
+      try {
+        if (header) ro.unobserve(header);
+      } catch (e) {}
+      try {
+        ro.disconnect();
+      } catch (e) {}
+      if (rafId) cancelAnimationFrame(rafId as number);
     };
   }, []);
 
