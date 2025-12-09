@@ -6,7 +6,7 @@
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-7.1-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 
-**Live Demo:** [portfolio-six-puce-65.vercel.app](https://portfolio-six-puce-65.vercel.app)
+**Live Demo:** [[portfolio-six-puce-65.vercel.app](https://portfolio-six-puce-65.vercel.app)](https://widgetwalker.netlify.app/)
 
 A modern, interactive portfolio website showcasing my work in web development, 3D graphics, and AI/ML. Built with cutting-edge technologies and featuring immersive 3D experiences.
 
