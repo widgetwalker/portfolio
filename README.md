@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Portfolio Website
 
 Modern, full-stack React portfolio website showcasing projects, skills, and professional experience with a stunning dark futuristic design.
