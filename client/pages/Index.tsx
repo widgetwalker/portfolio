@@ -4,6 +4,7 @@ import Projects from "@/components/sections/Projects";
 import Skills from "@/components/sections/Skills";
 import Timeline from "@/components/sections/Timeline";
 import Contact from "@/components/sections/Contact";
+import SpotlightCard from "@/components/SpotlightCard";
 
 export default function Index() {
   return (
@@ -11,7 +12,7 @@ export default function Index() {
       <Hero />
       <section id="about" className="relative mx-auto mt-24 max-w-7xl px-4">
         <div className="grid gap-6 md:grid-cols-2">
-          <div className="rounded-xl border border-white/10 bg-card/60 p-6 backdrop-blur">
+          <SpotlightCard className="p-6 hover-pop hover-glow">
             <h2 className="text-2xl font-semibold tracking-tight">About</h2>
             <p className="mt-2 text-muted-foreground">
               I'm Dheeraj, a CS undergraduate with technical orientation,
@@ -24,8 +25,8 @@ export default function Index() {
               analyze design evolutions, dispense amateur psychological insights
               as free therapy, and wield pencil sketches with expert precision.
             </p>
-          </div>
-          <div className="rounded-xl border border-white/10 bg-card/60 p-6 backdrop-blur">
+          </SpotlightCard>
+          <SpotlightCard className="p-6 hover-pop hover-glow">
             <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
               Focus Areas
             </h3>
@@ -57,7 +58,7 @@ export default function Index() {
                 Python Development
               </li>
             </ul>
-          </div>
+          </SpotlightCard>
         </div>
       </section>
 

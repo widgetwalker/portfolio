@@ -1,5 +1,6 @@
 import React from "react";
 import Animate from "@/components/Animate";
+import SpotlightCard from "@/components/SpotlightCard";
 
 const groups = [
   {
@@ -32,28 +33,30 @@ export default function Skills() {
       <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 auto-rows-fr">
         {groups.map((g, i) => (
           <Animate key={g.name} className="relative">
-            <div
+            <SpotlightCard
               key={g.name}
-              className="h-full flex flex-col justify-between rounded-xl border border-white/10 bg-card/60 p-5 backdrop-blur card-hover hover-glow hover-pop"
+              className="h-full p-5 hover-pop"
             >
-              <div>
-                <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
-                  {g.name}
-                </h3>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {g.items.map((i) => (
-                    <span
-                      key={i}
-                      className="rounded-full border border-white/10 bg-background/60 px-3 py-1 text-xs"
-                    >
-                      {i}
-                    </span>
-                  ))}
+              <div className="h-full flex flex-col justify-between">
+                <div>
+                  <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+                    {g.name}
+                  </h3>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {g.items.map((i) => (
+                      <span
+                        key={i}
+                        className="rounded-full border border-white/10 bg-background/60 px-3 py-1 text-xs"
+                      >
+                        {i}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              <div className="mt-4 text-xs text-muted-foreground">&nbsp;</div>
-            </div>
+                <div className="mt-4 text-xs text-muted-foreground">&nbsp;</div>
+              </div>
+            </SpotlightCard>
           </Animate>
         ))}
       </div>
