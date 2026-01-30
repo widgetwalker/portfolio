@@ -12,6 +12,7 @@ import NotFound from "./pages/NotFound";
 import BackgroundFX from "@/components/BackgroundFX";
 import SiteHeader from "@/components/layout/SiteHeader";
 import SiteFooter from "@/components/layout/SiteFooter";
+import CursorFollower from "@/components/CursorFollower";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -98,6 +99,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BackgroundFX />
+      <CursorFollower />
       <BrowserRouter>
         <SiteHeader />
         <ScrollToHash />
