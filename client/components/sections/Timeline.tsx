@@ -3,6 +3,27 @@ import Animate from "@/components/Animate";
 
 const items = [
   {
+    time: "Jan 2026 — Present",
+    title: "Research And Development Intern",
+    place: "SeraphGuard Labs",
+    details:
+      "Working on cutting-edge R&D projects in cybersecurity and AI-driven solutions. Contributing to innovative security technologies and research initiatives.",
+  },
+  {
+    time: "2026",
+    title: "Hackathon Winner — CareConnect Project",
+    place: "PUDoCS Pondicherry Footprints Alumni Association",
+    details:
+      "Won Winner's Trophy at Hackathon on Sustainable Healthcare and Wellbeing. Developed CareConnect: an AI-powered healthcare platform with smart appointment booking, medical records management, and NLP-driven triage scoring system. Built with teammates Sravya Isukapalla and Sathwik M.",
+  },
+  {
+    time: "2026",
+    title: "FounderX Global Startup Summit",
+    place: "IITM Research Park",
+    details:
+      "Attended intensive 2-day startup summit. Participated in idea pitching competition presenting SeraphGuard Labs concept. Networked with investors from BMW TechWorks India, Hindustan Group of Institutions, and Success Shipping. Gained insights on startup strategy, funding, and scaling.",
+  },
+  {
     time: "2023 — Present",
     title: "BSc (Hons) Computer Science",
     place: "Pondicherry University",
