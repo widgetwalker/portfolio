@@ -38,11 +38,11 @@ const items = [
       "Remote internship focusing on project leadership and development. Working with Python, PyTorch, and other cutting-edge technologies.",
   },
   {
-    time: "Nov 2025 — Present",
+    time: "Nov 2025 — Jan 2026",
     title: "Winter Intern — IoT, Computer Networks, ML & AI",
     place: "Hyderabad Central University",
     details:
-      "Full-time internship in Hyderabad, Telangana. Working on IoT, Computer Networks, Machine Learning, and AI projects.",
+      "Full-time internship in Hyderabad, Telangana. Worked on IoT, Computer Networks, Machine Learning, and AI projects.",
   },
   {
     time: "Oct 2024 — Nov 2025",
