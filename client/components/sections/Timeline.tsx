@@ -58,13 +58,7 @@ const items = [
     details:
       "Freelance content writing with over 3 years of experience. Creating technical documentation, articles, and creative content.",
   },
-  {
-    time: "Sep 2023 — Oct 2025",
-    title: "Student",
-    place: "Freelance",
-    details:
-      "On-site freelance work in Puducherry while pursuing education. Balanced academic commitments with professional development.",
-  },
+
   {
     time: "2023",
     title: "Class 12 — Sainik School Korukonda",
