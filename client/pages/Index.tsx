@@ -1,7 +1,7 @@
 import React from "react";
 import Hero from "@/components/sections/Hero";
 import Projects from "@/components/sections/Projects";
-import SkillsVisualization from "@/components/sections/SkillsVisualization";
+import Skills from "@/components/sections/Skills";
 import Timeline from "@/components/sections/Timeline";
 import Contact from "@/components/sections/Contact";
 
@@ -62,7 +62,7 @@ export default function Index() {
       </section>
 
       <Projects />
-      <SkillsVisualization />
+      <Skills />
       <Timeline />
       <Contact />
     </main>
