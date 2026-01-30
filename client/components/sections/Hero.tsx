@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Animate from "@/components/Animate";
+import StatsCounter from "@/components/StatsCounter";
 
 const TAGLINES = [
   "DHEERAJ doesn't build websites. He engineers digital adrenaline. Pixels obey. Code dances. The future watches.",
@@ -98,28 +99,7 @@ export default function Hero() {
               </button>
             </div>
 
-            <div className="mt-10 grid max-w-xl grid-cols-3 gap-4 text-center text-sm">
-              <Animate className="relative">
-                <div className="rounded-xl border border-white/10 bg-card/60 p-4 backdrop-blur card-hover hover-glow">
-                  <div className="text-2xl font-bold text-gradient">10+</div>
-                  <div className="text-muted-foreground">Projects</div>
-                </div>
-              </Animate>
-
-              <Animate className="relative" delay={80}>
-                <div className="rounded-xl border border-white/10 bg-card/60 p-4 backdrop-blur card-hover hover-glow">
-                  <div className="text-2xl font-bold text-gradient">5</div>
-                  <div className="text-muted-foreground">Hackathons</div>
-                </div>
-              </Animate>
-
-              <Animate className="relative" delay={140}>
-                <div className="rounded-xl border border-white/10 bg-card/60 p-4 backdrop-blur card-hover hover-glow">
-                  <div className="text-2xl font-bold text-gradient">8.7</div>
-                  <div className="text-muted-foreground">GPA</div>
-                </div>
-              </Animate>
-            </div>
+            <StatsCounter />
           </Animate>
         </div>
 

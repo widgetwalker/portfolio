@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Animate from "@/components/Animate";
+import GitHubHeatmap from "@/components/GitHubHeatmap";
 
 import { GITHUB_USERNAME } from "@/lib/config";
 
@@ -63,7 +64,7 @@ export default function Projects() {
           } else {
             setError(`GitHub API error: ${res.status}`);
           }
-          setRepos(DEFAULT_REPOS);
+          setRepos([]);
           return;
         }
 
@@ -116,6 +117,8 @@ export default function Projects() {
         </a>
       </div>
 
+      <GitHubHeatmap />
+
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
         {loading &&
           Array.from({ length: 6 }).map((_, i) => (
@@ -164,9 +167,20 @@ export default function Projects() {
                   el.style.setProperty("--y", `${(y / r.height) * 100}%`);
                 }}
                 onMouseLeave={(e) => {
+                  // Clean up visual effects
                   const el = e.currentTarget as HTMLElement;
                   el.style.removeProperty("--x");
                   el.style.removeProperty("--y");
+
+                  // Clean up debounce timer
+                  try {
+                    const timerKey = "data-prefetch-timer";
+                    const id = (el as any)[timerKey];
+                    if (id) {
+                      clearTimeout(id);
+                      delete (el as any)[timerKey];
+                    }
+                  } catch (e) { }
                 }}
                 onMouseEnter={(e) => {
                   // debounce prefetch: only fetch after 250ms hover to avoid many quick fetches
@@ -192,7 +206,7 @@ export default function Projects() {
                                 `/api/github/repo?id=${p.id}` as any,
                                 { signal: sig },
                               );
-                            } catch {}
+                            } catch { }
                             if (!r || !r.ok) {
                               try {
                                 r = await fetch(
@@ -204,7 +218,7 @@ export default function Projects() {
                                     },
                                   },
                                 );
-                              } catch {}
+                              } catch { }
                             }
                             if (r && r.ok) {
                               const data = await r.json();
@@ -213,7 +227,7 @@ export default function Projects() {
                                   key,
                                   JSON.stringify(data),
                                 );
-                              } catch (e) {}
+                              } catch (e) { }
                             }
                           } catch (e) {
                             // ignore network/fetch errors
@@ -221,22 +235,12 @@ export default function Projects() {
                             clearTimeout(timeout);
                           }
                         }
-                      } catch (e) {}
+                      } catch (e) { }
                     }, 250);
                     (el as any)[timerKey] = timerId;
-                  } catch (e) {}
+                  } catch (e) { }
                 }}
-                onMouseLeave={(e) => {
-                  try {
-                    const el = e.currentTarget as HTMLElement;
-                    const timerKey = "data-prefetch-timer";
-                    const id = (el as any)[timerKey];
-                    if (id) {
-                      clearTimeout(id);
-                      delete (el as any)[timerKey];
-                    }
-                  } catch (e) {}
-                }}
+
                 onFocus={(e) => {
                   // immediate prefetch on keyboard focus, but still throttled
                   try {
@@ -249,7 +253,7 @@ export default function Projects() {
                             r = await fetch(
                               `/api/github/repo?id=${p.id}` as any,
                             );
-                          } catch {}
+                          } catch { }
                           if (!r || !r.ok) {
                             try {
                               r = await fetch(
@@ -260,18 +264,18 @@ export default function Projects() {
                                   },
                                 },
                               );
-                            } catch {}
+                            } catch { }
                           }
                           if (r && r.ok) {
                             const data = await r.json();
                             try {
                               sessionStorage.setItem(key, JSON.stringify(data));
-                            } catch (e) {}
+                            } catch (e) { }
                           }
-                        } catch {}
+                        } catch { }
                       })();
                     }
-                  } catch (e) {}
+                  } catch (e) { }
                 }}
               >
                 <div
