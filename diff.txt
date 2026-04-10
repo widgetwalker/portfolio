@@ -1,0 +1,402 @@
+commit 2e8ee2fd94d27fc972b725c6e69d16f56cdac6b6
+Author: Dheeraj Pilli <dheeraj@example.com>
+Date:   Mon Apr 6 02:02:58 2026 +0530
+
+    Add Google Analytics Tag
+
+diff --git a/client/global.css b/client/global.css
+index bb035ed..976ffa2 100644
+--- a/client/global.css
++++ b/client/global.css
+@@ -1,100 +1,52 @@
+-/** @import must precede all other statements */
+-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap");
+-@import url("https://fontlibrary.org/face/gfs-decker");
+-/* Decker (GFS Decker) will be used for subheadings (fallback to Space Grotesk) */
++@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=La+Belle+Aurore&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+ 
+ @tailwind base;
+ @tailwind components;
+ @tailwind utilities;
+ 
+ @layer base {
+-  /**
+-   * Tailwind CSS theme
+-   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
+-   */
+   :root {
+-    /* Dark, futuristic base */
+-    --background: 222 47% 6%;
+-    --foreground: 210 40% 98%;
++    /* Parchment Base */
++    --background: 40 33% 94%; /* #F5F2EB */
++    --foreground: 210 29% 24%; /* #2C3E50 (Charcoal) */
+ 
+-    --card: 225 35% 8%;
+-    --card-foreground: 210 40% 98%;
++    --card: 40 33% 92%;
++    --card-foreground: 210 29% 24%;
+ 
+-    --popover: 225 35% 8%;
+-    --popover-foreground: 210 40% 98%;
++    --popover: 40 33% 94%;
++    --popover-foreground: 210 29% 24%;
+ 
+-    /* Neon violet primary */
+-    --primary: 262 83% 58%;
+-    --primary-foreground: 0 0% 100%;
++    /* Ink Primary */
++    --primary: 210 29% 24%;
++    --primary-foreground: 40 33% 94%;
+ 
+-    /* Electric cyan secondary */
+-    --secondary: 198 93% 60%;
+-    --secondary-foreground: 222 47% 6%;
++    /* Faded Rose Secondary */
++    --secondary: 0 36% 74%; /* #D4A5A5 */
++    --secondary-foreground: 210 29% 24%;
+ 
+-    --muted: 222 22% 16%;
+-    --muted-foreground: 215 20% 70%;
++    --muted: 210 20% 90%;
++    --muted-foreground: 210 15% 40%;
+ 
+-    --accent: 200 100% 50%;
+-    --accent-foreground: 222 47% 6%;
++    --accent: 108 10% 63%; /* #9CAB98 (Sage) */
++    --accent-foreground: 210 29% 24%;
+ 
+     --destructive: 0 84% 60%;
+     --destructive-foreground: 210 40% 98%;
+ 
+-    --border: 222 20% 20%;
+-    --input: 222 20% 20%;
+-    --ring: 262 83% 58%;
+-
+-    --radius: 0.75rem;
++    --border: 210 15% 85%;
++    --input: 210 15% 85%;
++    --ring: 210 29% 24%;
+ 
+-    /* Sidebar (unused by default but kept consistent) */
+-    --sidebar-background: 222 47% 6%;
+-    --sidebar-foreground: 210 40% 98%;
+-    --sidebar-primary: 262 83% 58%;
+-    --sidebar-primary-foreground: 0 0% 100%;
+-    --sidebar-accent: 222 22% 16%;
+-    --sidebar-accent-foreground: 210 40% 98%;
+-    --sidebar-border: 222 20% 20%;
+-    --sidebar-ring: 200 100% 50%;
++    --radius: 0.5rem;
+   }
+ 
+-  /* Keep values identical so the site is consistently dark */
+   .dark {
+-    --background: 222 47% 6%;
+-    --foreground: 210 40% 98%;
+-
+-    --card: 225 35% 8%;
++    /* Invert for "Midnight Journal" mode if needed, but keeping light mode focus for now */
++    --background: 222 47% 11%;
++    --foreground: 40 20% 90%; 
++    --card: 222 47% 11%;
+     --card-foreground: 210 40% 98%;
+-
+-    --popover: 225 35% 8%;
+-    --popover-foreground: 210 40% 98%;
+-
+-    --primary: 262 83% 58%;
+-    --primary-foreground: 0 0% 100%;
+-
+-    --secondary: 198 93% 60%;
+-    --secondary-foreground: 222 47% 6%;
+-
+-    --muted: 222 22% 16%;
+-    --muted-foreground: 215 20% 70%;
+-
+-    --accent: 200 100% 50%;
+-    --accent-foreground: 222 47% 6%;
+-
+-    --destructive: 0 62.8% 30.6%;
+-    --destructive-foreground: 210 40% 98%;
+-
+-    --border: 222 20% 20%;
+-    --input: 222 20% 20%;
+-    --ring: 262 83% 58%;
+-
+-    --sidebar-background: 222 47% 6%;
+-    --sidebar-foreground: 210 40% 98%;
+-    --sidebar-primary: 262 83% 58%;
+-    --sidebar-primary-foreground: 0 0% 100%;
+-    --sidebar-accent: 222 22% 16%;
+-    --sidebar-accent-foreground: 210 40% 98%;
+-    --sidebar-border: 222 20% 20%;
+-    --sidebar-ring: 200 100% 50%;
++    /* ... other dark mode vars */
+   }
+ }
+ 
+@@ -102,239 +54,41 @@
+   * {
+     @apply border-border;
+   }
+-
+   body {
+     @apply bg-background text-foreground antialiased;
+-    font-family:
+-      "Space Grotesk",
+-      system-ui,
+-      -apple-system,
+-      Segoe UI,
+-      Roboto,
+-      Inter,
+-      "Helvetica Neue",
+-      Arial,
+-      "Noto Sans",
+-      "Apple Color Emoji",
+-      "Segoe UI Emoji",
+-      "Segoe UI Symbol",
+-      "Noto Color Emoji",
+-      sans-serif;
++    font-family: 'Lora', serif;
++    background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
++    background-blend-mode: multiply;
+   }
+-
+-  /* Subheadings (About, Projects, Skills, Timeline, Contact) use Decker */
+-  h2,
+-  h3,
+-  .subheading {
+-    font-family:
+-      "GFSDeckerNormal",
+-      "Space Grotesk",
+-      system-ui,
+-      -apple-system,
+-      Segoe UI,
+-      Roboto,
+-      Inter,
+-      sans-serif;
+-    font-weight: 700;
+-    letter-spacing: -0.5px;
++  
++  h1, h2, h3, h4, h5, h6 {
++    font-family: 'Cinzel Decorative', serif;
++    @apply tracking-tight text-ink;
+   }
+ 
+-  html {
+-    scroll-behavior: smooth;
++  /* Custom Class for Handwritten Accents */
++  .font-handwriting {
++    font-family: 'La Belle Aurore', cursive;
+   }
+ }
+ 
+ @layer utilities {
+-  .text-gradient {
+-    background: linear-gradient(
+-      90deg,
+-      hsl(var(--primary)) 0%,
+-      hsl(var(--accent)) 100%
+-    );
+-    -webkit-background-clip: text;
+-    background-clip: text;
+-    color: transparent;
+-  }
+-  .neon-border {
+-    box-shadow:
+-      0 0 0 1px hsl(var(--border)) inset,
+-      0 0 24px hsl(var(--accent) / 0.25),
+-      0 0 48px hsl(var(--primary) / 0.15);
+-  }
+-
+-  /* Smooth transition utility */
+-  .transition-smooth {
+-    transition: all 350ms cubic-bezier(0.2, 0.9, 0.2, 1);
+-    will-change: transform, opacity, box-shadow, filter;
+-  }
+-
+-  /* Fade up animation used when element enters viewport */
+-  @keyframes fadeUp {
+-    from {
+-      opacity: 0;
+-      transform: translateY(18px) scale(0.995);
++    /* Simulates ink soaking into paper */
++    .ink-multiply {
++        mix-blend-mode: multiply;
+     }
+-    to {
+-      opacity: 1;
+-      transform: translateY(0) scale(1);
++    
++    /* Watercolor wash effect class */
++    .watercolor-wash {
++        filter: url('#watercolor');
+     }
+-  }
+-
+-  .animate-fade-up {
+-    animation: fadeUp 600ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
+-  }
+ 
+-  /* Subtle pop for hover */
+-  @keyframes pop {
+-    0% {
+-      transform: translateY(0) scale(1);
+-    }
+-    50% {
+-      transform: translateY(-4px) scale(1.02);
++    /* Edge roughness for containers */
++    .rough-edge {
++        clip-path: polygon(
++            0% 0%, 100% 0%, 100% 100%, 0% 100%,
++            0% 50%, 2% 45%, 0% 40%, 1% 35%, 0% 30%
++        );
++        /* This is a placeholder; actual SVG filters are better for this */
+     }
+-    100% {
+-      transform: translateY(0) scale(1);
+-    }
+-  }
+-
+-  .hover-pop:hover {
+-    animation: pop 420ms ease;
+-  }
+-
+-  /* Glow effect for cards */
+-  .card-glow {
+-    box-shadow:
+-      0 6px 30px rgba(2, 6, 23, 0.6),
+-      0 0 0 1px hsl(var(--border)) inset;
+-  }
+-
+-  .hover-glow:hover {
+-    box-shadow:
+-      0 12px 60px rgba(88, 70, 204, 0.16),
+-      0 0 48px hsl(var(--primary) / 0.08),
+-      0 0 24px hsl(var(--accent) / 0.06);
+-    transform: translateY(-8px) scale(1.03);
+-  }
+-
+-  /* Glossy / glowy gradient card used for highlighted sections like timeline */
+-  .glossy-card {
+-    /* subtle glass + neon gradient */
+-    position: relative;
+-    overflow: hidden;
+-    background-color: rgba(13, 17, 28, 0.55);
+-    background-image:
+-      linear-gradient(
+-        180deg,
+-        rgba(255, 255, 255, 0.02),
+-        rgba(255, 255, 255, 0.01)
+-      ),
+-      linear-gradient(
+-        135deg,
+-        hsl(var(--primary) / 0.08),
+-        hsl(var(--accent) / 0.06)
+-      );
+-    border: 1px solid rgba(255, 255, 255, 0.06);
+-    box-shadow:
+-      0 10px 40px rgba(88, 70, 204, 0.12),
+-      0 0 60px hsl(var(--primary) / 0.04) inset;
+-    backdrop-filter: blur(6px) saturate(1.05);
+-  }
+-
+-  .glossy-card::before {
+-    content: "";
+-    position: absolute;
+-    inset: 0;
+-    background: linear-gradient(
+-      90deg,
+-      rgba(255, 255, 255, 0.04),
+-      rgba(255, 255, 255, 0) 30%
+-    );
+-    mix-blend-mode: overlay;
+-    pointer-events: none;
+-    z-index: 0;
+-  }
+-
+-  .glossy-card::after {
+-    content: "";
+-    position: absolute;
+-    left: -30%;
+-    top: -40%;
+-    width: 160%;
+-    height: 160%;
+-    background:
+-      radial-gradient(
+-        circle at 30% 20%,
+-        rgba(124, 59, 237, 0.12),
+-        transparent 12%
+-      ),
+-      radial-gradient(
+-        circle at 80% 80%,
+-        rgba(0, 170, 255, 0.08),
+-        transparent 18%
+-      );
+-    transform: rotate(12deg);
+-    opacity: 0.9;
+-    pointer-events: none;
+-    z-index: 0;
+-  }
+-
+-  .glossy-card > * {
+-    position: relative;
+-    z-index: 1;
+-  }
+-
+-  /* Utility to slightly lift on hover using tailwind safe classes fallback */
+-  .card-hover {
+-    transition:
+-      transform 300ms cubic-bezier(0.2, 0.9, 0.2, 1),
+-      box-shadow 300ms cubic-bezier(0.2, 0.9, 0.2, 1),
+-      opacity 300ms;
+-    will-change: transform, box-shadow;
+-  }
+-
+-  /* Simple line clamp (3 lines) without plugin */
+-  .line-clamp-3 {
+-    display: -webkit-box;
+-    -webkit-line-clamp: 3;
+-    -webkit-box-orient: vertical;
+-    overflow: hidden;
+-  }
+-
+-  /* Red gradient text for name highlights */
+-  .text-gradient-red {
+-    background: linear-gradient(90deg, #ff375f 0%, #ff8a00 100%);
+-    -webkit-background-clip: text;
+-    background-clip: text;
+-    color: transparent;
+-  }
+-
+-  /* Tagline crossfade (dust-like) */
+-  .tagline-fade {
+-    transition:
+-      opacity 700ms cubic-bezier(0.2, 0.9, 0.2, 1),
+-      transform 700ms cubic-bezier(0.2, 0.9, 0.2, 1),
+-      filter 700ms cubic-bezier(0.2, 0.9, 0.2, 1);
+-  }
+-
+-  .tagline-hidden {
+-    opacity: 0;
+-    transform: translateY(10px) scale(0.995);
+-    filter: blur(3px) saturate(0.9);
+-  }
+-
+-  .tagline-visible {
+-    opacity: 1;
+-    transform: translateY(0) scale(1);
+-    filter: blur(0) saturate(1);
+-  }
+-
+-  /* Ensure anchored sections are visible below the fixed header */
+-  section[id] {
+-    scroll-margin-top: calc(var(--header-height, 88px) + 12px);
+-  }
+-
+-  /* Ensure main content is never hidden behind the fixed header */
+-  main {
+-    padding-top: calc(var(--header-height, 88px) + 12px);
+-  }
+ }

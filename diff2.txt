@@ -1,0 +1,67 @@
+commit 2e8ee2fd94d27fc972b725c6e69d16f56cdac6b6
+Author: Dheeraj Pilli <dheeraj@example.com>
+Date:   Mon Apr 6 02:02:58 2026 +0530
+
+    Add Google Analytics Tag
+
+diff --git a/client/components/layout/SiteHeader.tsx b/client/components/layout/SiteHeader.tsx
+index d727aa0..3ea7de4 100644
+--- a/client/components/layout/SiteHeader.tsx
++++ b/client/components/layout/SiteHeader.tsx
+@@ -32,7 +32,7 @@ export default function SiteHeader() {
+   };
+ 
+   return (
+-    <header className="fixed top-0 z-40 w-full">
++    <header id="site-header" className="fixed top-0 z-40 w-full">
+       <div className="mx-auto max-w-7xl px-4">
+         <div
+           className={cn(
+@@ -40,7 +40,7 @@ export default function SiteHeader() {
+             "border-white/10",
+           )}
+         >
+-          <a href="/" className="group inline-flex items-center gap-2">
++          <a href="/" id="logo-link" className="group inline-flex items-center gap-2">
+             <div className="relative">
+               <span className="text-gradient text-xl font-bold tracking-wider">
+                 DHEERAJ
+@@ -52,7 +52,7 @@ export default function SiteHeader() {
+             </span>
+           </a>
+ 
+-          <nav className="hidden gap-6 text-sm font-medium sm:flex">
++          <nav id="header-nav" className="hidden gap-6 text-sm font-medium sm:flex">
+             {nav.map((item) => (
+               <a
+                 key={item.href}
+diff --git a/client/pages/ProjectDetail.tsx b/client/pages/ProjectDetail.tsx
+index 54059b1..ae0d876 100644
+--- a/client/pages/ProjectDetail.tsx
++++ b/client/pages/ProjectDetail.tsx
+@@ -94,6 +94,14 @@ export default function ProjectDetail() {
+   if (loading) {
+     return (
+       <div className="mx-auto max-w-4xl px-4 py-28">
++        <div className="flex items-center gap-3 mb-6">
++          <Link
++            to="/"
++            className="text-sm text-muted-foreground hover:text-primary transition-colors"
++          >
++            ← Home
++          </Link>
++        </div>
+         <div className="flex items-center gap-4">
+           <div>
+             <div className="h-6 w-48 animate-pulse rounded bg-muted/40" />
+@@ -121,8 +129,8 @@ export default function ProjectDetail() {
+       <div className="mx-auto max-w-4xl px-4 py-28 text-destructive">
+         {error ?? "Repository not found."}
+         <div className="mt-6">
+-          <Link to="/" className="text-primary underline">
+-            Return home
++          <Link to="/projects" className="text-primary underline">
++            Back to projects
+           </Link>
+         </div>
+       </div>

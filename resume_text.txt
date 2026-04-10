@@ -1,0 +1,97 @@
+Pilli Dheeraj
+dheeraj5765483@gmail.com — pilli-dheeraj.linkedin — widgetwalker.github — DHEERAJ.com
+Education
+Pondicherry University 2023 – Present
+BSc Honors Computer Science CGPA: 8.6
+Sainik School Korukonda 2023
+Class 12 Computer Science and STEM
+Sainik School Korukonda 2021
+Class 10
+Work Experience
+SeraphGuard Labs Jan 2026 – Present
+Research And Development Intern Remote
+– Working on cutting-edge R&D projects in cybersecurity and AI-driven solutions
+– Contributing to innovative security technologies and research initiatives
+Blend Vidya Nov 2025 – F eb 2026
+Winter Intern - Project Head and Lead Developer Bangalore
+– Orchestrated AI initiatives with Python and PyTorch to advance multimodal model capabilities
+– Deployed production-grade ML systems supporting real-time inference
+Hyderabad Central University Nov 2025 – Jan 2026
+Winter Intern - 5G Technologies, IoT, Networks, ML & AI Hyderabad
+– Architected edge-computing solutions on 5G MEC servers integrating IoT sensors, network protocols, ML, and NLP
+– Crafted low-latency pipelines for real-time data processing and predictive analytics
+Atal Incubation Centre - Pondicherry Engineering College F oundation Oct 2024 – Nov 2025
+Student Intern Hybrid, Puducherry
+– Prototyped and validated emerging technologies for startup incubation
+– Collaborated on interdisciplinary AI and digital system innovations
+F reelance May 2022 – Present
+Content Writer Remote
+– Authored technical documentation, research articles, poetry, story scripts, and educational content across fiction and CS
+domains
+Projects
+AirSense5G: Air Quality Guardian ὑ7 Flutter, Dart
+– Designed cross-platform mobile app for real-time air quality monitoring with AI forecasts over 5G
+– Fused multi-sensor data to generate personalized health alerts and recommendations
+– Deployed responsive UI translating raw environmental data into actionable insights
+Image Caption Generator ὑ7 Python, PyTorch, Streamlit, OpenCV
+– Pioneered vision-to-language system using BLIP for automated captioning of images and webcam feeds
+– Integrated SQLite persistence and interactive Streamlit dashboard for history tracking
+3D Viewer ὑ7 Python
+– Forged interactive 3D OBJ renderer with texture support, custom shaders, and real-time controls
+– Supported multi-view modes and dynamic manipulation for advanced visualization
+Personal Financer ὑ7 Python
+– Engineered financial tracker managing income, expenses, and categorization
+– Added summary reports and CSV export for budgeting analysis
+Credit Card F raud Detection ὑ7 Python
+– Constructed ensemble ML pipeline detecting anomalies in transaction data
+– Enabled real-time prediction with high precision on imbalanced datasets
+ML Air Pollution Predictor ὑ7 Python
+– Assembled regression system forecasting air quality indices across multiple parameters
+– Integrated NLP for personalized health risk assessments
+CareConnect ὑ7 TypeScript, React
+– Crafted AI-powered healthcare platform enhancing patient accessibility and care
+– Implemented diagnostic tools and remote monitoring features
+Nazma Charitable T rust W eb ὑ7 React, TypeScript, Supabase
+– Assembled full-stack portal streamlining nonprofit operations and donor engagement
+– Configured secure Supabase backend for real-time data synchronization
+Library Management System ὑ7 HTML, CSS, JavaScript
+– Created responsive web app for inventory, lending, and user management
+– Implemented search, reservation, and administrative controls
+AI Chat Bot ὑ7 HTML, JavaScript
+– Engineered lightweight conversational agent with NLP processing
+– Designed modular architecture for extensions and integrations
+Image Detection Projects ὑ7 Python, OpenCV, YOLO
+– Trained YOLO models on custom datasets for object detection in security scenarios
+– Implemented real-time computer vision systems for theft monitoring
+Simple Games / Low-Poly Games ὑ7 Python, Pygame, Turtle
+– Developed arcade-style games showcasing game loops and graphics rendering
+– Applied physics simulations and interactive mechanics
+SELF-TRACK ὑ7 JavaScript
+– Built productivity tracker with data visualization dashboards
+– Enabled goal setting and progress analytics
+AGHIZU GO ὑ7 TypeScript
+– Developed modern healthcare application with reactive UI components
+– Optimized performance via advanced state management
+Technical Skills
+Languages: Python, C/C++, TypeScript, JavaScript, Rust, SQL, Dart
+F rameworks/Libraries: React, Next.js, Node.js, Express, Tailwind CSS, PyTorch, Flutter, Streamlit, OpenCV,
+Pygame, YOLO
+T ools: Git, Docker, Blender, Autodesk Maya, VS Code, Supabase
+Domains: Machine Learning/AI, Computer Vision, 3D Graphics, Full-Stack Development, IoT
+Honours and Awards
+Hackathon on Sustainable Healthcare and W ellbeing Jan 2026
+Winner’s Trophy Pondicherry University
+– Team CRUSADERS won the Winner’s Trophy at the Hackathon on Sustainable Healthcare and Wellbeing, organized by
+the PUDoCS Pondicherry Footprints Alumni Association during the Alumni Meet 2026
+Origins of Navy Comic Strip 2023
+Project Lead and Designer Indian Navy
+– Directed development and design of educational comic strip commissioned by the Indian Navy
+4th Regional Conclave - The Institution of Engineers (India) 2023
+– Secured 1st Prize in Project Competition
+– Secured 2nd Prize in Model/Idea Competition
+Innovation in IoT - The Institution of Engineers (India) 2022–2023
+System Software Developer
+– Delivered system software for teams placing 1st and 2nd
+Smart India Hackathon 2022–2023
+Team Leader
+– Led a team at the Smart India Hackathon; acted as System Software developer for teams that placed in Innovation in IoT

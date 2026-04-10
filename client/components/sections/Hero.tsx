@@ -124,8 +124,8 @@ export default function Hero() {
 
           <div className="pointer-events-none absolute -right-6 top-10 hidden rotate-12 md:block">
             <div className="rounded-full border border-white/10 bg-card/70 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
-              <span className="text-gradient font-semibold">Futuristic</span> ·
-              Aesthetic · Dark
+              <span className="text-gradient font-semibold">Algorithms</span> ·
+              Interfaces · Systems
             </div>
           </div>
         </div>
