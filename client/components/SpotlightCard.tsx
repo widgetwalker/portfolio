@@ -64,7 +64,7 @@ export default function SpotlightCard({
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             style={tilt ? { rotateX, rotateY, transformPerspective: 1000 } : {}}
-            className={`relative overflow-hidden rounded-xl border border-white/20 bg-black/40 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.5)] card-hover ${className}`}
+            className={`relative overflow-hidden rounded-xl border border-white/20 bg-black/75 backdrop-blur-2xl shadow-[0_4px_30px_rgba(0,0,0,0.5)] card-hover ${className}`}
             {...props}
         >
             {/* Added a subtle white noise texture overlay for absolute premium glassmorphism feel */}
